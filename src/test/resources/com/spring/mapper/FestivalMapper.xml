@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.FestivalMapper">
+	<insert id="insertFestival">
+	insert into festival (name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate) 
+			values (#{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, #{latitude}, #{hardness}, #{startdate}, #{enddate})
+	
+	
+	
+	<!-- insert into tbl_board(bno, title, content, writer)
+		values(seq_board.nextval, #{title}, #{content}, #{writer})-->
+	</insert>
+
+
+</mapper>
+	<!--  VALUES (#{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, #{latitude}, #{hardness}, #{startdate}, #{enddate})-->
