@@ -34,6 +34,11 @@ public class test {
 		
 		
 	}
+	@Test
+	public void get() {
+		mapper.getlist();
+		
+	}
 			
 
 

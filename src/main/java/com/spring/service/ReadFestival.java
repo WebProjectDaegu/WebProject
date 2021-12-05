@@ -26,8 +26,8 @@ public class ReadFestival {
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
 				+ "=Rc4sFom7FuKH%2F5sITRwAbU%2BAwbRiIMz4BWQyYIa1TLwa1Kg2xDImrarUPtbILcJ2yPmyqxaTaS1sRwjgPRXmvw%3D%3D");
 		urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
-		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("0", "UTF-8"));
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("1000", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8"));
 
 		
 		
@@ -55,7 +55,6 @@ public class ReadFestival {
         String jsonString = sb.substring(sb.lastIndexOf("body")+6);
         jsonString = (String) jsonString.subSequence(0, jsonString.length()-2);
         
-        //String jsonInfo = "{\"books\":[{\"genre\":\"소설\",\"price\":\"100\",\"name\":\"사람은 무엇으로 사는가?\",\"writer\":\"톨스토이\",\"publisher\":\"톨스토이 출판사\"},{\"genre\":\"소설\",\"price\":\"300\",\"name\":\"홍길동전\",\"writer\":\"허균\",\"publisher\":\"허균 출판사\"},{\"genre\":\"소설\",\"price\":\"900\",\"name\":\"레미제라블\",\"writer\":\"빅토르 위고\",\"publisher\":\"빅토르 위고 출판사\"}],\"persons\":[{\"nickname\":\"남궁민수\",\"age\":\"25\",\"name\":\"송강호\",\"gender\":\"남자\"},{\"nickname\":\"예니콜\",\"age\":\"21\",\"name\":\"전지현\",\"gender\":\"여자\"}]}";
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(jsonString);
         JSONObject festivalArray0 = (JSONObject) jsonObject.get("body");
@@ -78,26 +77,7 @@ public class ReadFestival {
         	festivalDTO.setEnddate((String) a.get("fstvlEndDate"));
         	festivalList.add(festivalDTO);
         	
-//
-//        	System.out.println("======================================================");
-//        	System.out.println("축제명 : "+i + "  "+a.get("fstvlNm"));
-//        	System.out.println("개최장소 :"+ a.get("opar"));
-//        	System.out.println("축제시작일자 :"+a.get("fstvlStartDate"));
-//        	System.out.println("축제종료일자 :"+a.get("fstvlEndDate"));
-//        	System.out.println("축제내용 :"+a.get("fstvlCo"));
-//        	System.out.println("주관기관 :"+a.get("mnnst"));
-//        	System.out.println("주최기관 :"+a.get("auspcInstt"));
-//        	System.out.println("후원기관 :"+a.get("suprtInstt"));
-//        	System.out.println("홈페이지주소 :"+a.get("homepageUrl"));
-//        	System.out.println("전화번호 :"+a.get("phoneNumber"));
-//        	System.out.println("관련정보 :"+a.get("relateInfo"));
-//        	System.out.println("소재지도로명주소 :"+a.get("rdnmadr"));
-//        	System.out.println("소재지지번주소 :"+a.get("lnmadr"));
-//        	System.out.println("위도 :"+a.get("latitude"));
-//        	System.out.println("경도 :"+a.get("hardness"));
-//        	System.out.println("데이터기준일자 :"+a.get("referenceDate"));
-//        	System.out.println("======================================================");
-//        	
+      	
         }
         
         

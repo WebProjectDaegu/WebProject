@@ -5,13 +5,16 @@
 <mapper namespace="com.spring.mapper.FestivalMapper">
 	<insert id="insertFestival">
 	insert into festival (name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate) 
-			values (#{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, #{latitude}, #{hardness}, #{startdate}, #{enddate})
-	
+			 select #{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, #{latitude}, #{hardness}, #{startdate}, #{enddate}
+	from dual WHERE NOT EXISTS (SELECT name FROM festival WHERE name = #{name})
 	
 	
 	<!-- insert into tbl_board(bno, title, content, writer)
 		values(seq_board.nextval, #{title}, #{content}, #{writer})-->
 	</insert>
+	<select id="getlist" resultType="com.spring.domain.FestivalDTO">
+		select name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate from festival order by startdate desc
+	</select>
 
 
 </mapper>
