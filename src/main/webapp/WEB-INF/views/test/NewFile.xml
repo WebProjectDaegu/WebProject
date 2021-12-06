@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--
 {"response":{"header":{"resultCode":"00","resultMsg":"NORMAL_SERVICE","type":"json"},"body":{"items":[{"fstvlNm":"봉화은어축제","opar":"봉화읍
 체육공원 및 내성천
 일원","fstvlStartDate":"2021-07-31","fstvlEndDate":"2021-08-08","fstvlCo":"○
@@ -44,4 +44,4 @@
 외","mnnst":"광명시평생학습네트워크협의체","auspcInstt":"광명시","suprtInstt":"없음","phoneNumber":"02-2680-6200","homepageUrl":"http://lll.gm.go.kr/site/festival","relateInfo":"광명8경","rdnmadr":"경기도
 광명시 오리로 854번길 10(철산동, 광명시평생학습원)","lnmadr":"경기도 광명시 철산동
 419","latitude":"37.4743772","longitude":"126.8684796","referenceDate":"2020-12-18","insttCode":"3900000"}],"totalCount":
-"1043","numOfRows": "10","pageNo": "1"}}}
+"1043","numOfRows": "10","pageNo": "1"}}}  -->

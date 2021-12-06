@@ -26,7 +26,7 @@ public class ReadFestival {
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
 				+ "=Rc4sFom7FuKH%2F5sITRwAbU%2BAwbRiIMz4BWQyYIa1TLwa1Kg2xDImrarUPtbILcJ2yPmyqxaTaS1sRwjgPRXmvw%3D%3D");
 		urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
-		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("6", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8"));
 
 		
