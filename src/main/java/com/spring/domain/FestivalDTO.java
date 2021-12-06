@@ -1,14 +1,12 @@
 package com.spring.domain;
 
-import java.util.Date;
 
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 
-@Getter
-@Setter
+
 @Data
 public class FestivalDTO {
 	private String name;

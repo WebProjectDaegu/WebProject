@@ -12,5 +12,5 @@ import com.spring.domain.FestivalDTO;
 public interface FestivalMapper {
 
 	public void insertFestival(FestivalDTO festivalDTO);
-	public void getlist();
+	public List<FestivalDTO> getlist();
 }
