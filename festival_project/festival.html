@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>festival_index</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script>
+        $(function(){
+            var trigger = $("#trigger");
+            var menu = $("nav ul");
+            $(trigger).click(function(e){
+                e.preventDefault();
+                menu.slideToggle();
+            });
+
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w >= 764 && menu.is(":hidden")){
+                    menu.removeAttr('style');
+                }
+            });
+            $(".bxslider").bxSlider({
+                auto:true,
+                autoHover:true
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <button type="button" onclick="window.open('festival_join.html');">회원가입</button>
+        <button type="button" onclick="window.open('festival_login.html');">로그인</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">전국 문화축제</a></li>
+            <li><a href="#">리뷰 게시판</a></li>
+            <li><a href="#">자유 게시판</a></li>
+        </ul>
+        <a href="#" id="trigger">MENU</a>
+    </nav>
+    <br>
+    <br>
+    <h1>우리지역 문화축제</h1>
+    <section id="bxslider_section">
+        <div class="wrapper">
+            <div class="banner">
+                <div class="bxslider">
+                    <div><img src="images/image1.jpg"></div>
+                    <div><img src="images/image2.jpg"></div>
+                    <div><img src="images/image3.jpg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section id="info">
+        <div class="wrapper">
+            <h2>지역별_축제asdvasd</h2>
+            <br>
+            <p>contentscontents</p>
+            <p>contentscontentscontents</p>
+        </div>
+    </section>
+
+    <div id="wrap">
+        <footer>footer</footer>
+    </div>
+</body>
+</html>
