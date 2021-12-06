@@ -64,8 +64,7 @@ public class ReadFestival {
         for(int i = 0;i<festivalArray.size();i++) {
         	JSONObject a = (JSONObject) festivalArray.get(i);
         	FestivalDTO festivalDTO = new FestivalDTO();
-        	
-			festivalDTO.setName((String) a.get("fstvlNm")+"("+(String)a.get("fstvlStartDate")+")");
+			festivalDTO.setName((String) a.get("fstvlNm"));
         	festivalDTO.setLocation((String) a.get("opar"));
         	festivalDTO.setContent((String) a.get("fstvlCo"));
         	festivalDTO.setPhone((String) a.get("phoneNumber"));

@@ -9,6 +9,7 @@ import lombok.Setter;
 
 @Data
 public class FestivalDTO {
+	private long bno;
 	private String name;
 	private String location;
 	private String content;

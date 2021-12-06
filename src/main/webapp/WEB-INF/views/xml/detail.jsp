@@ -9,7 +9,7 @@
 </head>
 <body>
 <ul>
-	<li><c:out value = "${xml.name }"/></li>
+	<li><c:out value = "${xml.bno }"/>||<c:out value = "${xml.name }"/>||<c:out value = "${xml.startdate }"/></li>
 
 
 
