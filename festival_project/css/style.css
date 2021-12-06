@@ -7,9 +7,9 @@
 }
 
 body {
-    margin: 0;
-    background-color: #f5f5f5;
-  }
+  margin: 0;
+  background-color: #f5f5f5;
+}
 #wrap {
   float: left;
   width: 100%;
@@ -223,4 +223,70 @@ footer {
 .links a {
   font-size: 12px;
   color: #838282;
+}
+
+/* 공지사항 */
+
+body {
+  font: 17px "Nanum Gothic", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #404040;
+}
+
+li {
+  list-style: none;
+}
+
+/*BODY*/
+
+#notice {
+  width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  /*outline: 1px dashed black;*/
+}
+
+#notice h1 {
+  font-size: 25px;
+  text-align: center;
+  margin: 10px 180px;
+  padding: 10px;
+  color: #000;
+  background: #d0d8db;
+  border-radius: 30px;
+}
+
+#notice ul {
+  width: 100%;
+}
+
+#notice ul li {
+  line-height: 30px; /*li 세로 간격*/
+  padding-left: 20px;
+}
+
+#notice ul li:first-child {
+  border-top: 2px solid #6a6a6a;
+  border-bottom: 2px solid #6a6a6a;
+  padding-left: 150px;
+}
+
+#notice ul li:last-child {
+  border-bottom: 1px solid #000;
+}
+
+#notice ul li:nth-child(2n) {
+  background: rgb(139, 136, 136);
+  border-radius: 20px;
+}
+
+#notice ul li span {
+  display: inline-block;
+  float: right;
+  width: 150px;
+  text-align: center;
 }
