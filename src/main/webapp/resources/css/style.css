@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+#wrap {
+  float: left;
+  width: 100%;
+}
+
+/* 화면 너비 0 ~ 1200px */
+@media (max-width: 1220px) {
+  section {
+    width: 100%;
+  }
+}
+/* 화면 너비 0 ~ 768px */
+@media (max-width: 768px) {
+  section {
+    width: 100%;
+    height: 300px;
+  }
+}
+/* 화면 너비 0 ~ 480px */
+@media (max-width: 480px) {
+  header {
+    height: 300px;
+  }
+  section {
+    height: 200px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+}
+
+/* header */
+header {
+  width: 100%;
+  height: 50px;
+  background: white;
+}
+button {
+  float: right;
+  margin-right: 25px;
+  margin-top: 7px;
+  display: block;
+  width: 100px;
+  height: 30px;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+  border: 1px solid white;
+}
+.homeA{
+  float: right;
+  text-align:center;
+  margin-right: 25px;
+  margin-top: 7px;
+  display: block;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: #000000;
+  border: 1px solid white;
+}
+/*네비게이션*/
+a:link,
+a:hover,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+nav {
+  width: 100vw;
+  height: auto;
+  background: white;
+  border-bottom: 1px solid #dbdbdb;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
+nav ul {
+  display: none;
+  height: auto;
+  text-align: center;
+}
+nav ul li {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+nav ul li a {
+  line-height: 50px;
+}
+nav a#trigger {
+  text-align: center;
+  display: block;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #dbdbdb;
+  line-height: 40px;
+  position: relative;
+}
+
+/* 화면 너비 0 ~ 768px */
+@media screen and (min-width: 768px) {
+  nav {
+    height: auto;
+    background-color: white;
+  }
+  nav ul {
+    list-style: none;
+    display: block;
+    width: 750px;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+  }
+  nav ul li {
+    display: inline-block;
+    width: 22%;
+    border-bottom: 0;
+    margin-right: -6px;
+  }
+
+  nav ul li a {
+    font-size: 1em;
+    line-height: auto;
+  }
+  nav a#trigger {
+    display: none;
+  }
+}
+
+/* 섹션 */
+section {
+  width: auto;
+  position: relative;
+}
+.wrapper {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+/* 화면 너비 0 ~ 768px */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+}
+
+/* 푸터 */
+footer {
+  padding-left: 20px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-color: #e4e0e0;
+  border-top: 1px solid #dbdbdb;
+}
+
+@media screen and (min-width: 764px) {
+  .footer {
+    max-width: 1300px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* 로그인, 회원가입 */
+.login-form {
+  width: 300px;
+  background-color: #d3d3d3;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+}
+
+.join-form {
+  width: 300px;
+  background-color: #d3d3d3;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+}
+
+.text-field {
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  width: 260px;
+  margin-bottom: 10px;
+}
+
+.submit-btn {
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  background-color: #3333c0;
+  margin-bottom: 10px;
+  color: white;
+}
+.reset-btn {
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  background-color: #8c8c8d;
+  margin-bottom: 10px;
+  color: white;
+}
+.links {
+  text-align: center;
+}
+
+.links a {
+  font-size: 12px;
+  color: #838282;
+}

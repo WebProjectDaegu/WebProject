@@ -9,11 +9,10 @@
 </head>
 <body>
 <ul>
-<c:forEach  var = "festival" items="${XML}">
-	<li><a href="detail?name=${festival.name}"><c:out value = "${festival.name }"/></a></li>
+	<li><c:out value = "${xml.name }"/></li>
 
 
-</c:forEach>
+
 
 </ul>
 

@@ -15,5 +15,10 @@ public class XMLServiceimpl implements XMLService {
 	public List<FestivalDTO> getList() {
 		return mapper.getlist();
 	}
+	@Override
+	public FestivalDTO getDetail(String name) {
+		// TODO Auto-generated method stub
+		return mapper.getDetail(name);
+	}
 
 }

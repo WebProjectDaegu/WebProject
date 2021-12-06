@@ -6,4 +6,5 @@ import com.spring.domain.FestivalDTO;
 
 public interface XMLService {
 	public List<FestivalDTO> getList();
+	public FestivalDTO getDetail(String name);
 }
