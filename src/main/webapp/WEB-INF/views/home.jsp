@@ -38,8 +38,9 @@
         });
     </script>
 </head>
+
 <body>
-    <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
     <br>
     <br>
     <h1>우리지역 문화축제</h1>
@@ -54,13 +55,27 @@
             </div>
         </div>
     </section>
-    <hr>
+
     <section id="info">
-        <div class="wrapper">
-            <h2>지역별_축제asdvasd</h2>
-            <br>
-            <p>contentscontents</p>
-            <p>contentscontentscontents</p>
+        <div id="div1">
+            <button type="button" id="notice_btn" onclick="location.href='festival_notice.html'">
+                공지사항
+            </button>
+        </div>
+        <div id="div2">
+            <button type="button" id="local_btn" onclick="location.href='festival_local_info.html'">
+                전국 문화축제
+            </button>
+        </div>
+        <div id="div3">
+            <button type="button" id="review_btn" onclick="location.href='festival_review.html'">
+                리뷰 게시판
+            </button>
+        </div>
+        <div id="div4">
+            <button type="button" id="free_btn" onclick="location.href='festival_free.html'">
+                자유 게시판
+            </button>
         </div>
     </section>
 
