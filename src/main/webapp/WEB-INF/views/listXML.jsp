@@ -37,19 +37,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <!-- <button type="button" onclick="location.href='festival.html'">메인 페이지</button> -->
-        <h1>문화축제.</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">메인 페이지</a></li>
-            <li><a href="/">공지사항</a></li>
-            <li><a href="/">리뷰 게시판</a></li>
-            <li><a href="/">자유 게시판</a></li>
-        </ul>
-        <a href="#" id="trigger">MENU</a>
-    </nav>
+    <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <section>
         <h1>문화축제.</h1>
     </section>

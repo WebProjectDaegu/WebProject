@@ -4,5 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.domain.MemberDTO;
 public interface MemberService {
-	public void register(MemberDTO memberDTO) ;
+	public String register(MemberDTO memberDTO) ;
+	public String login(MemberDTO memberDTO);
+	public int logincheck(MemberDTO memberDTO);
 }

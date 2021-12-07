@@ -7,10 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>festival_index</title>
-    <link rel="stylesheet" href="/resources/css/style.css">
+    <link href="/resources/css/style.css" rel="stylesheet">
     <link href="/resources/css/jquery.bxslider.min.css" rel="stylesheet">
     <script src="/resources/js/jquery.js"></script>
     <script src="/resources/js/jquery.bxslider.min.js"></script>
+    <style type="text/css">
+    
+    
+    
+    </style>
     <script>
         $(function(){
             var trigger = $("#trigger");
@@ -33,22 +38,8 @@
         });
     </script>
 </head>
-
 <body>
-    <header>
-        <button type="button" onclick="location.href='memberRegister'">회원가입</button>
-        <button type="button" onclick="location.href='Login'">로그인</button>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#">공지사항</a></li>
-            <li><a href="xml/listXML">전국 문화축제</a></li>
-            <li><a href="#">리뷰 게시판</a></li>
-            <li><a href="#">자유 게시판</a></li>
-        </ul>
-        <a href="#" id="trigger">MENU</a>
-    </nav>
+    <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <br>
     <br>
     <h1>우리지역 문화축제</h1>

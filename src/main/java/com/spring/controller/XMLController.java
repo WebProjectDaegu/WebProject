@@ -7,6 +7,7 @@ import java.io.WriteAbortedException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,36 +26,48 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @RequiredArgsConstructor
-@RequestMapping("/xml/*")
+@RequestMapping("/*")
 public class XMLController {
 	@Autowired
 	XMLService service;
+
 	@GetMapping("/write")
 	public void WriteAbortedException() {
-		
+
 	}
-	
+
 	@GetMapping("/getFestival")
-	public void getXML(Model model ) throws IOException, ParseException {
-		
+	public void getXML(Model model) throws IOException, ParseException {
+
 		ReadFestival a = new ReadFestival();
-		
-
-
-		
 
 	}
+
 	@GetMapping("/listXML")
 	public void list(Model model) {
 		log.info(service.getList());
-		model.addAttribute("XML",service.getList());
+		model.addAttribute("XML", service.getList());
 	}
+
 	@GetMapping("detail")
-	public void festivalDetail(@RequestParam("name") String name, Model model){
-		model.addAttribute("xml",service.getDetail(name));
-		
+	public void festivalDetail(@RequestParam("name") String name, Model model) {
+		model.addAttribute("xml", service.getDetail(name));
+
 	}
-	
-	
-	
+
+	@GetMapping("/notice")
+	public void notice() {
+
+	}
+
+	@GetMapping("/review")
+	public void review() {
+
+	}
+
+	@GetMapping("/free")
+	public void free() {
+
+	}
+
 }

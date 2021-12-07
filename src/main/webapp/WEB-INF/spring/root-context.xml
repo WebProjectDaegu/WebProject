@@ -18,7 +18,16 @@
 		<property name="username" value="book_ex"></property>
 		<property name="password" value="1234 "></property>
 	</bean>
-
+	<!--  
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl"
+			value="org.springframework.jdbc.datasource.DataSourceTransactionManager"></property>
+		<property name="username" value="book_ex"></property>
+		<property name="password" value="1234 "></property>
+	</bean>
+-->
 	<!-- HikariCP configuration -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
@@ -38,6 +47,6 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<tx:annotation-driven/>
+	<tx:annotation-driven />
 
 </beans>

@@ -5,13 +5,25 @@ import org.springframework.stereotype.Service;
 
 import com.spring.domain.MemberDTO;
 import com.spring.mapper.FestivalMapper;
+import com.spring.mapper.MemberMapper;
 @Service
 public class MemberServiceimpl implements MemberService {
 	@Autowired
-	
+	private MemberMapper mapper;
 	@Override
-	public void register(MemberDTO memberDTO) {
-		
+	public String register(MemberDTO memberDTO) {
+		mapper.registermember(memberDTO);
+		return memberDTO.getNickname();
+	}
+	@Override
+	public String login(MemberDTO memberDTO) {
+		mapper.login(memberDTO);
+		return memberDTO.getNickname();
+	}
+	@Override
+	public int logincheck(MemberDTO memberDTO) {
+		// TODO Auto-generated method stub
+		return mapper.logincheck(memberDTO);
 	}
 
 }
