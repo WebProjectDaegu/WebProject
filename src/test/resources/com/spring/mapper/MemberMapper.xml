@@ -14,5 +14,8 @@
 	<select id="logincheck" resultType="int">
 		select count(id) from memberinfo where id = #{id} and password =#{password}
 	</select>
+	<select id="registermembercheck" resultType="int">
+		select count(id) from memberinfo where id = #{id}
+	</select>
 
 </mapper>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.domain.MemberDTO;
 import com.spring.service.MemberService;
@@ -40,7 +41,7 @@ public class memberController {
 	}
 
 	@PostMapping("/memberRegisterProcess")
-	public String memberRegisterProcess(@RequestParam("email") String email, @RequestParam("password") String password,
+	public String memberRegisterProcess(RedirectAttributes model,@RequestParam("email") String email, @RequestParam("password") String password,
 			@RequestParam("name") String name, @RequestParam("gender") String gender,
 			@RequestParam("nickname") String nickname, @RequestParam("birth") String birth,
 			@RequestParam("phone") String phone) {
@@ -55,9 +56,22 @@ public class memberController {
 
 		log.info(gender);
 		log.info(memberDTO);
-		service.register(memberDTO);
+		
+		if(service.registercheck(memberDTO)>= 1) {
+			//service.login(memberDTO);
+			log.info("회원가입 실패 이미있는 아이디입니다");
+			//model.addAttribute("memberdto",memberDTO );
+			//model.addAttribute("id",email );
+			return "redirect:/member/memberRegister";
+			
+		}else {
+			log.info("회원가입 성공");
+			service.register(memberDTO);
+			return "redirect:/";
+			
+			
+		}
 
-		return "redirect:/";
 	}
 
 	@PostMapping("/loginProcess")
@@ -66,7 +80,7 @@ public class memberController {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId(email);
 		memberDTO.setPassword(password);
-		if(service.logincheck(memberDTO)== 1) {
+		if(service.logincheck(memberDTO)>= 1) {
 			//service.login(memberDTO);
 			log.info("로그인 성공");
 			session.setAttribute("login", email);

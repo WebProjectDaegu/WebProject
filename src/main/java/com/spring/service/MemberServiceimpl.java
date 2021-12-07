@@ -25,5 +25,10 @@ public class MemberServiceimpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.logincheck(memberDTO);
 	}
+	@Override
+	public int registercheck(MemberDTO memberDTO) {
+		// TODO Auto-generated method stub
+		return mapper.registermembercheck(memberDTO);
+	}
 
 }
