@@ -2,6 +2,10 @@ package com.spring.controller;
 
 import static org.hamcrest.CoreMatchers.nullValue;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -57,25 +61,35 @@ public class memberController {
 	}
 
 	@PostMapping("/loginProcess")
-	public String loginProcess(Model model ,@RequestParam("email") String email, @RequestParam("password") String password) {
+	public String loginProcess(HttpServletRequest req,Model model ,@RequestParam("email") String email, @RequestParam("password") String password) {
+		HttpSession session = req.getSession();
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId(email);
 		memberDTO.setPassword(password);
 		if(service.logincheck(memberDTO)== 1) {
 			//service.login(memberDTO);
 			log.info("로그인 성공");
+			session.setAttribute("login", email);
 			return "redirect:/";
 			
 		}else {
 			log.info("로그인 실패");
+			session.setAttribute("login", null);
 			model.addAttribute("loginid", email);
 			return "redirect:/member/Login";
 			
 			
 		}
 		
+		
 
 
+	}
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+		return "redirect:/";
 	}
 
 }
