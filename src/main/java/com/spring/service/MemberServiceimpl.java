@@ -16,9 +16,8 @@ public class MemberServiceimpl implements MemberService {
 		return memberDTO.getNickname();
 	}
 	@Override
-	public String login(MemberDTO memberDTO) {
-		mapper.login(memberDTO);
-		return memberDTO.getNickname();
+	public MemberDTO login(MemberDTO memberDTO) {
+		return mapper.login(memberDTO);
 	}
 	@Override
 	public int logincheck(MemberDTO memberDTO) {

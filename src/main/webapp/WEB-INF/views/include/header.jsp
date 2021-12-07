@@ -9,9 +9,9 @@
 
 	</c:if>
 	<c:if test="${login != null }">
-		<span><c:out value="${login }" />님 어서오세요</span>
+		<span><c:out value="${login.nickname }" />님 어서오세요</span>
 		<button type="submit" onclick="location.href='/member/logout'">로그아웃</button>
-		<button type="button" onclick="">회원정보</button>
+		<button type="button" onclick="location.href='/member/MemberInfo'">회원정보</button>
 	</c:if>
 </header>
 

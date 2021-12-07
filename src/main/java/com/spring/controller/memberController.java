@@ -83,7 +83,7 @@ public class memberController {
 		if(service.logincheck(memberDTO)>= 1) {
 			//service.login(memberDTO);
 			log.info("로그인 성공");
-			session.setAttribute("login", email);
+			session.setAttribute("login", service.login(memberDTO));
 			return "redirect:/";
 			
 		}else {
@@ -104,6 +104,10 @@ public class memberController {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		return "redirect:/";
+	}
+	@GetMapping("/MemberInfo")
+	public void memberinfo() {
+		
 	}
 
 }

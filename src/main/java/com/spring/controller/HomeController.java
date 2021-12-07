@@ -31,13 +31,5 @@ public class HomeController {
 	public String home(Locale locale, Model model) {	
 		return "home";
 	}
-	@GetMapping("/Login")
-	public void Loginpage() {
-		
-	}
-	@GetMapping("/memberRegister")
-	public void Register() {
-	
-	}
 	
 }

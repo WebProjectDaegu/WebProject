@@ -7,8 +7,8 @@
 		insert into memberinfo (membern,id,password,name,gender,nickname,birth,phone) 
 		values(memberseq.nextval, #{id},#{password},#{name},#{gender},#{nickname},#{birth},#{phone})
 	</insert>
-	<select id="login">
-		select nickname from memberinfo where id = #{id} and password =#{password}
+	<select id="login" resultType="com.spring.domain.MemberDTO">
+		select * from memberinfo where id = #{id} and password =#{password}
 	
 	</select>
 	<select id="logincheck" resultType="int">
