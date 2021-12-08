@@ -1,5 +1,7 @@
 package com.spring.domain;
 
+import java.sql.Date;
+
 import javax.swing.border.TitledBorder;
 
 import lombok.Data;
@@ -11,7 +13,7 @@ import lombok.Getter;
 @Setter
 public class BoardDTO {
 	private long bbno;
-	private String writedate;
+	private Date writedate;
 	private String title;
 	private String writer;
 	private String content;

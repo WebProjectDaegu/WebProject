@@ -32,10 +32,15 @@ public class XMLtest {
 	public void testa() throws IOException, ParseException {
 		
 		ReadFestival a = null;
-		List<FestivalDTO> b = a.read();
-		for(int i =0;i<b.size();i++) {
-			mapper.insertFestival(b.get(i));
+		List<FestivalDTO> b;
+		for(int j = 0;j<20;j++) {
+			b= a.read(j);
+			for(int i =0;i<b.size();i++) {
+				mapper.insertFestival(b.get(i));
+			}
 		}
+		 
+		
 		
 		
 	}

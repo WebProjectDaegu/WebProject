@@ -2,6 +2,10 @@ package com.spring.controller;
 
 import static org.hamcrest.CoreMatchers.nullValue;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -44,14 +48,16 @@ public class memberController {
 	public String memberRegisterProcess(RedirectAttributes model,@RequestParam("email") String email, @RequestParam("password") String password,
 			@RequestParam("name") String name, @RequestParam("gender") String gender,
 			@RequestParam("nickname") String nickname, @RequestParam("birth") String birth,
-			@RequestParam("phone") String phone) {
+			@RequestParam("phone") String phone) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Date date =new Date(sdf.parse(birth).getTime());
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId(email);
 		memberDTO.setPassword(password);
 		memberDTO.setName(name);
 		memberDTO.setGender(gender);
 		memberDTO.setNickname(nickname);
-		memberDTO.setBirth(birth);
+		memberDTO.setBirth(date);
 		memberDTO.setPhone(phone);
 
 		log.info(gender);

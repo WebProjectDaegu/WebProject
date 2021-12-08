@@ -22,13 +22,13 @@ import com.spring.domain.FestivalDTO;
 public class ReadFestival {
 	
 	public int a =1;
-	public static List<FestivalDTO> read() throws IOException, ParseException {
+	public static List<FestivalDTO> read(int pageNo) throws IOException, ParseException {
 		List<FestivalDTO> festivalList = new ArrayList<FestivalDTO>();
 		StringBuilder urlBuilder = new StringBuilder("http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
 				+ "=Rc4sFom7FuKH%2F5sITRwAbU%2BAwbRiIMz4BWQyYIa1TLwa1Kg2xDImrarUPtbILcJ2yPmyqxaTaS1sRwjgPRXmvw%3D%3D");
 		urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
-		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("6", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(pageNo), "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8"));
 
 		
@@ -78,9 +78,10 @@ public class ReadFestival {
         	festivalDTO.setEnddate((String) a.get("fstvlEndDate"));
         	festivalDTO.setRdnmadr((String) a.get("rdnmadr"));//도로명주소
         	festivalDTO.setLnmadr((String) a.get("lnmadr"));//지번 주소
+        	festivalDTO.setLocation("기타");
         	String w =(String) a.get("rdnmadr");
         	String e =(String) a.get("lnmadr");
-        	String[] location = {"대구","부산","광주","서울","경기도","강원도","충청북도","충청남도","경상북도","경상남도","전라북도","전라남도","제주특별자치도"};
+        	String[] location = {"세종","대구","부산","광주","서울","인천","대전","울산","경기도","강원도","충청북도","충청남도","경상북도","경상남도","전라북도","전라남도","제주특별자치도"};
         	for(int j =0;j<location.length;j++) {
         		if(e.contains(location[j])||w.contains(location[j])) {
         			festivalDTO.setLocation(location[j]);//지역분류

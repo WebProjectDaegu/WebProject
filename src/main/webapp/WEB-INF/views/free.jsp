@@ -79,7 +79,16 @@
             padding-left: 16px;
             background:url(images/ic_reply.png) 0 1px no-repeat;
         }
-    
+    	        #write_btn {
+            border: 0;
+            outline: 0;
+            float: right;
+            width: 80px;
+            height: 25px;
+            background-color: #f1ddc5;
+            color: black;
+            margin-right: 220px;
+        }
     </style>
     <script>
          $(function(){
@@ -103,6 +112,11 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <br>
     <h1>자유 게시판</h1>
+        <br>
+    <div id="write">
+        <button type="button" id="write_btn" onclick="window.open('free_write.html');">작성하기</button>
+    </div>
+    <br>
     <br>
     <table class="free" border="1" cellspacing="0">
         <caption>자유 게시판</caption>

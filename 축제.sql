@@ -20,7 +20,7 @@ startdate date,
 enddate date
 );
 
-select * from festival order by startdate desc;
+select * from festival order by location desc;
 
 --회원정보
 drop sequence memberseq;
@@ -69,7 +69,7 @@ title varchar2(200),
 writedate date,
 content varchar2(2000)
 );
-insert into noticeboard (nno,title,content,writedate) values (noticeseq.nextval,'제목','내용',20221222); 
+insert into noticeboard (nno,title,content,writedate) values (noticeseq.nextval,'제목','내용','20221222'); 
 insert into noticeboard (nno,title,content,writedate) values (#{},#{},#{}); 
 
 

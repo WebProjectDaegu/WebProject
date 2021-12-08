@@ -1,5 +1,7 @@
 package com.spring.domain;
 
+import java.sql.Date;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +16,7 @@ public class MemberDTO {
 	private String name;
 	private String gender;
 	private String nickname;
-	private String birth;
+	private Date birth;
 	private String phone;
 	private long permission;
 }
