@@ -77,6 +77,28 @@
             background:url(images/ic_reply.png) 0 1px no-repeat;
         }
 
+        /* search */
+        #search {
+            text-align: center;
+            padding-top: 50px;
+        }
+        button {
+            color: white;
+            background-color: black;
+            border: 0;
+            outline: 0;
+            width: 50px;
+            height: 20px;
+        }
+        /* 작성하기 버튼 */
+        #write_btn {
+            float: right;
+            width: 80px;
+            height: 25px;
+            background-color: #f1ddc5;
+            color: black;
+            margin-right: 220px;
+        }
     </style>
     <script>
          $(function(){
@@ -106,13 +128,18 @@
         <ul>
             <li><a href="festival.html">메인 페이지</a></li>
             <li><a href="festival_notice.html">공지사항</a></li>
-            <li><a href="festival_review.html">전국 문화축제</a></li>
+            <li><a href="festival_local_info.html">전국 문화축제</a></li>
             <li><a href="festival_free.html">자유 게시판</a></li>
         </ul>
         <a href="#" id="trigger">MENU</a>
     </nav>
     <br>
     <h1>경상북도 리뷰 페이지</h1>
+    <br>
+    <br>
+    <div id="write">
+        <button type="button" id="write_btn" onclick="window.open('review_write.html');">작성하기</button>
+    </div>
     <br>
     <table class="review" border="1" cellspacing="0" summary="게시판의 글 제목 리스트">
         <caption>리뷰 게시판 리스트</caption>
@@ -144,13 +171,34 @@
             </tr>
             <tr class="reviewreview">
                 <td class="title">
-                    <a href="#">제목재목제목제목메족메족제목</a>
+                    <a href="#"> 답글</a>
+                    <img src="images/ic_new.gif" width="10" height="9" class="new" alt="새글">
                 </td>
                 <td class="name">글쓴ㄴ이</td>
                 <td class="date">2021/12/24</td>
                 <td class="hit">123</td>
             </tr>
-            <tr class="reviewreview">
+            <tr class="title">
+                <td class="title">
+                    <a href="#">새 글</a>
+                    <img src="images/ic_pic.gif" alt="첨부이미지" width="13" height="12" class="pic">
+                    <a class="comment" href="#">[1]</a>
+                    <img src="images/ic_new.gif" width="10" height="9" class="new" alt="새글">
+                </td>
+                <td class="name">글쓴ㄴ이</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
+            <td class="title">
+                <a href="#">제목재목제목제목메족메족제목</a>
+                <img src="images/ic_pic.gif" alt="첨부이미지" width="13" height="12" class="pic">
+                <a class="comment" href="#">[8]</a>
+            </td>
+                <td class="name">글쓴ㄴ이</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
+            <tr class="title">
                 <td class="title" >
                     <a href="#">제목재목제목제목메족메족제목</a>
                 </td>
@@ -158,23 +206,7 @@
                 <td class="date">2021/12/24</td>
                 <td class="hit">123</td>
             </tr>
-            <tr class="reviewreview">
-                <td class="title" >
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
-            <tr class="reviewreview">
-                <td class="title" >
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
-            <tr class="reviewreview">
+            <tr class="title">
                 <td class="title" >
                     <a href="#">제목재목제목제목메족메족제목</a>
                 </td>
@@ -184,6 +216,17 @@
             </tr>
         </tbody>
     </table>
+    <div id="search">
+        <form>
+            <select name="category">
+                <option value="title">제목</option>
+                <option value="name">글쓴이</option>
+                <option value="content">내용</option>
+            </select>
+            <input type="text" name="search" size="40" required="required">
+            <button class="btn button">검색</button>
+        </form>
+    </div>
     <br>
     <div id="wrap">
         <footer>footer</footer>

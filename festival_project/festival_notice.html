@@ -76,6 +76,19 @@
         background:url(images/ic_reply.png) 0 1px no-repeat;
     }
 
+    /* search */
+    #search {
+        text-align: center;
+        padding-top: 50px;
+    }
+    button {
+        color: white;
+        background-color: black;
+        border: 0;
+        outline: 0;
+        width: 50px;
+        height: 20px;
+    }
 </style>
 <script>
      $(function(){
@@ -132,59 +145,29 @@
     <tbody>
         <tr>
             <td class="title">
-                <a href="#">제목재목제목제목메족메족제목</a>
-                <img src="images/ic_pic.gif" alt="첨부이미지" width="13" height="12" class="pic">
-                <a class="comment" href="#">[5]</a>
+                <a href="#">공지사항 게시판 이용 안내</a>
+                <a class="comment" href="#">[1]</a>
                 <img src="images/ic_new.gif" width="10" height="9" class="new" alt="새글">
             </td>
-            <td class="name">글쓴ㄴ이</td>
+            <td class="name">관리자</td>
             <td class="date">2021/12/24</td>
-            <td class="hit">123</td>
-        </tr>
-        <tr class="reviewreview">
-            <td class="title">
-                <a href="#">제목재목제목제목메족메족제목</a>
-            </td>
-            <td class="name">글쓴ㄴ이</td>
-            <td class="date">2021/12/24</td>
-            <td class="hit">123</td>
-        </tr>
-        <tr class="reviewreview">
-            <td class="title" >
-                <a href="#">제목재목제목제목메족메족제목</a>
-            </td>
-            <td class="name">글쓴ㄴ이</td>
-            <td class="date">2021/12/24</td>
-            <td class="hit">123</td>
-        </tr>
-        <tr class="reviewreview">
-            <td class="title" >
-                <a href="#">제목재목제목제목메족메족제목</a>
-            </td>
-            <td class="name">글쓴ㄴ이</td>
-            <td class="date">2021/12/24</td>
-            <td class="hit">123</td>
-        </tr>
-        <tr class="reviewreview">
-            <td class="title" >
-                <a href="#">제목재목제목제목메족메족제목</a>
-            </td>
-            <td class="name">글쓴ㄴ이</td>
-            <td class="date">2021/12/24</td>
-            <td class="hit">123</td>
-        </tr>
-        <tr class="reviewreview">
-            <td class="title" >
-                <a href="#">제목재목제목제목메족메족제목</a>
-            </td>
-            <td class="name">글쓴ㄴ이</td>
-            <td class="date">2021/12/24</td>
-            <td class="hit">123</td>
+            <td class="hit">10</td>
         </tr>
     </tbody>
 </table>
-        <br>
-    </section>
+<div id="search">
+    <form>
+        <select name="category">
+            <option value="title">제목</option>
+            <option value="name">글쓴이</option>
+            <option value="content">내용</option>
+        </select>
+        <input type="text" name="search" size="40" required="required">
+        <button class="btn button">검색</button>
+    </form>
+</div>
+<br>
+</section>
     <div id="wrap">
         <footer>footer</footer>
     </div>
