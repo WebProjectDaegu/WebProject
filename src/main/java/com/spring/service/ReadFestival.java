@@ -1,5 +1,7 @@
 package com.spring.service;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -65,15 +67,27 @@ public class ReadFestival {
         	JSONObject a = (JSONObject) festivalArray.get(i);
         	FestivalDTO festivalDTO = new FestivalDTO();
 			festivalDTO.setName((String) a.get("fstvlNm"));
-        	festivalDTO.setLocation((String) a.get("opar"));
-        	festivalDTO.setContent((String) a.get("fstvlCo"));
+        	festivalDTO.setOpar((String) a.get("opar"));//개최장소
+        	festivalDTO.setFstvlCo((String) a.get("fstvlCo"));
         	festivalDTO.setPhone((String) a.get("phoneNumber"));
         	festivalDTO.setHomepage((String) a.get("homepageUrl"));
-        	festivalDTO.setLocal((String) a.get("auspcInstt"));
-        	festivalDTO.setLatitude((String) a.get("latitude"));
-        	festivalDTO.setHardness((String) a.get("longitude"));
+        	festivalDTO.setAuspcInstt((String) a.get("auspcInstt"));//주최지
+        	festivalDTO.setLatitude((String) a.get("latitude"));//위도
+        	festivalDTO.setHardness((String) a.get("longitude"));//경도
         	festivalDTO.setStartdate((String) a.get("fstvlStartDate"));
         	festivalDTO.setEnddate((String) a.get("fstvlEndDate"));
+        	festivalDTO.setRdnmadr((String) a.get("rdnmadr"));//도로명주소
+        	festivalDTO.setLnmadr((String) a.get("lnmadr"));//지번 주소
+        	String w =(String) a.get("rdnmadr");
+        	String e =(String) a.get("lnmadr");
+        	String[] location = {"대구","부산","광주","서울","경기도","강원도","충청북도","충청남도","경상북도","경상남도","전라북도","전라남도","제주특별자치도"};
+        	for(int j =0;j<location.length;j++) {
+        		if(e.contains(location[j])||w.contains(location[j])) {
+        			festivalDTO.setLocation(location[j]);//지역분류
+        			break;
+        		}
+        	}
+        	
         	festivalList.add(festivalDTO);
         	
       	

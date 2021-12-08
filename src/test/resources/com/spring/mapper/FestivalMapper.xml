@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.FestivalMapper">
 	<insert id="insertFestival">
-	insert into festival (bno,name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate) 
-			 select festivalseq.nextval, #{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, #{latitude}, #{hardness}, #{startdate}, #{enddate}
+	insert into festival (bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate) 
+			 select festivalseq.nextval, #{name}, #{opar}, #{fstvlCo}, #{phone}, #{homepage}, #{auspcInstt}, #{latitude}, #{hardness},#{lnmadr},#{rdnmadr},#{location}, #{startdate}, #{enddate}
 	from dual WHERE NOT EXISTS (SELECT name FROM festival WHERE name = #{name} and startdate = #{startdate})
 	
 	
@@ -13,11 +13,11 @@
 		values(seq_board.nextval, #{title}, #{content}, #{writer})-->
 	</insert>
 	<select id="getlist" resultType="com.spring.domain.FestivalDTO">
-		select bno,name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate from festival order by startdate desc
+		select bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate from festival order by startdate desc
 	</select>
 
 	<select id="getDetail" resultType="com.spring.domain.FestivalDTO">
-	select bno,name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate from festival where name = #{name}
+	select bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate from festival where name = #{name}
 	</select>
 
 </mapper>

@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자유 게시판</title>
-    <link rel="stylesheet" href="/resources/css/style.css">
-    <script src="/resources/js/jquery.js"></script>
+    <title>강원도 리뷰</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
     <style>
         * {
             margin: 0;
@@ -18,25 +17,25 @@
             box-sizing: border-box;
             font-family: "Noto Sans KR", sans-serif;
         }
-        .free, .free th, .free td {
+        .review, .review th, .review td {
             border: 0;
             margin-left: 240px;
         }
-        .free a {
+        .review a {
             color: #383838;
             text-decoration: none;
         }
-        .free {
+        .review {
             width: 70%;
             border-bottom: 1px solid #999999;
             color: #666;
             font-size: 12px;
             table-layout: fixed;
         }
-        .free caption {
+        .review caption {
             display: none;
         }
-        .free th {
+        .review th {
             padding: 5px 0 6px;
             border-top: solid 1px #999;
             border-bottom:solid 1px #b2b2b2;
@@ -46,40 +45,40 @@
             line-height: 20px;
             vertical-align: top;
         }
-        .free td {
+        .review td {
             padding: 8px 0 9px;
             border-bottom: 1px solid #d2d2d2;
             text-align: center;
             line-height: 18px;
         }
-    
-        .free .date, .free .hit {
+
+        .review .date, .review .hit {
             padding: 0;
             font-family: Tahoma;
             font-size: 11px;
             line-height: normal;
         }
-        .free .title {
+        .review .title {
             text-align: left;
             padding-left: 15px;
             font-size: 13px;
         }
-        .free .title .pic, .free .title .new {
+        .review .title .pic, .review .title .new {
             margin: 0 0 2px;
             vertical-align: middle;
         }
-        .free .title a.comment{
+        .review .title a.comment{
             padding: 0;
             background: none;
             color: #f00;
             font-size: 12px;
             font-weight: bold;
         }
-        .free tr.freefree .title a {
+        .review tr.reviewreview .title a {
             padding-left: 16px;
             background:url(images/ic_reply.png) 0 1px no-repeat;
         }
-    
+
     </style>
     <script>
          $(function(){
@@ -89,7 +88,7 @@
                 e.preventDefault();
                 menu.slideToggle();
             });
-    
+
             $(window).resize(function(){
                 var w = $(window).width();
                 if(w >= 764 && menu.is(":hidden")){
@@ -98,14 +97,14 @@
             });
         });
     </script>
-    </head>
-    <body>
+</head>
+<body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <br>
-    <h1>자유 게시판</h1>
+    <h1>강원도 리뷰 페이지</h1>
     <br>
-    <table class="free" border="1" cellspacing="0">
-        <caption>자유 게시판</caption>
+    <table class="review" border="1" cellspacing="0" summary="게시판의 글 제목 리스트">
+        <caption>리뷰 게시판 리스트</caption>
         <colgroup>
             <col>
             <col width="110">
@@ -121,30 +120,62 @@
             </tr>
         </thead>
         <tbody>
-        <c:forEach var="board" items="${board }">
-        	 <tr>
+            <tr>
                 <td class="title">
-                    <a href="/getlist?bbno=<c:out value = "${board.bbno}"/>"><c:out value="${board.title }" /></a>
-                    <img src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13" height="12" class="pic">
-                    <a class="comment" href="#">[<c:out value = "${board.replyer }"/>]</a>
-                    <img src="/resources/images/ic_new.gif" width="10" height="9" class="new" alt="새글">
+                    <a href="#">제목재목제목제목메족메족제목</a>
+                    <img src="images/ic_pic.gif" alt="첨부이미지" width="13" height="12" class="pic">
+                    <a class="comment" href="#">[5]</a>
+                    <img src="images/ic_new.gif" width="10" height="9" class="new" alt="새글">
                 </td>
-                <td class="name"><c:out value="${board.writer }" /></td>
+                <td class="name">글쓴ㄴ이</td>
                 <td class="date">2021/12/24</td>
-                <td class="hit"><c:out value = "${board.visiter }"/></td>
+                <td class="hit">123</td>
             </tr>
-        
-        
-        
-        
-        </c:forEach>
-
+            <tr class="reviewreview">
+                <td class="title">
+                    <a href="#">제목재목제목제목메족메족제목</a>
+                </td>
+                <td class="name">글쓴ㄴ이</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
+            <tr class="reviewreview">
+                <td class="title" >
+                    <a href="#">제목재목제목제목메족메족제목</a>
+                </td>
+                <td class="name">글쓴ㄴ이</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
+            <tr class="reviewreview">
+                <td class="title" >
+                    <a href="#">제목재목제목제목메족메족제목</a>
+                </td>
+                <td class="name">글쓴ㄴ이</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
+            <tr class="reviewreview">
+                <td class="title" >
+                    <a href="#">제목재목제목제목메족메족제목</a>
+                </td>
+                <td class="name">글쓴ㄴ이</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
+            <tr class="reviewreview">
+                <td class="title" >
+                    <a href="#">제목재목제목제목메족메족제목</a>
+                </td>
+                <td class="name">글쓴ㄴ이</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
         </tbody>
     </table>
-            <br>
-        </section>
-        <div id="wrap">
-            <footer>footer</footer>
-        </div>
-    </body>
-    </html>
+    <br>
+    <div id="wrap">
+        <footer>footer</footer>
+    </div>
+</body>
+</html>

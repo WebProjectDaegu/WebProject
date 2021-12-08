@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import static org.hamcrest.CoreMatchers.allOf;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.io.IOException;
 import java.io.WriteAbortedException;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.w3c.dom.NodeList;
 
+import com.spring.service.BoardService;
+import com.spring.service.NoticeService;
 import com.spring.service.ReadFestival;
 import com.spring.service.XMLService;
 import com.spring.service.XMLServiceimpl;
@@ -30,6 +33,10 @@ import lombok.extern.log4j.Log4j;
 public class XMLController {
 	@Autowired
 	XMLService service;
+	@Autowired
+	BoardService boardservice;
+	@Autowired
+	NoticeService noticeService;
 
 	@GetMapping("/write")
 	public void WriteAbortedException() {
@@ -56,18 +63,23 @@ public class XMLController {
 	}
 
 	@GetMapping("/notice")
-	public void notice() {
-
+	public void notice(Model model) {
+		model.addAttribute("board",noticeService.getlist());
 	}
 
 	@GetMapping("/review")
 	public void review() {
 
 	}
-
-	@GetMapping("/free")
-	public void free() {
+	@GetMapping("/festival")
+	public void festival() {
 
 	}
+	@GetMapping("/free")
+	public void free(Model model) {
+		log.info(boardservice.getBoardwithBoard("자유"));
+		model.addAttribute("board",boardservice.getBoardwithBoard("자유"));
+	}
+	
 
 }

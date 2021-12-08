@@ -1,0 +1,36 @@
+package com.spring.mapper;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.spring.domain.BoardDTO;
+import com.spring.domain.MemberDTO;
+
+import lombok.extern.log4j.Log4j;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@Log4j
+public class mappertest {
+	@Autowired
+	BoardMapper mapper;
+	BoardDTO boardDTO = new BoardDTO() ;
+	@Test
+	public void registerboard() {
+		boardDTO.setTitle("제목");
+		boardDTO.setWriter("작성자");
+		boardDTO.setContent("내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용");
+		boardDTO.setMembern(11);
+		boardDTO.setName("김축제");
+		boardDTO.setType("자유");
+		mapper.registerBoard(boardDTO);
+	}
+	
+	@Test
+	public void getlist() {
+		log.info(mapper.getboardwithtype("자유"));
+	}
+	
+}

@@ -78,9 +78,7 @@
             </button>
         </div>
     </section>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
-    <div id="wrap">
-        <footer>footer</footer>
-    </div>
 </body>
 </html>

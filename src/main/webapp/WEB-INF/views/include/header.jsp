@@ -18,7 +18,7 @@
 <nav>
 	<ul>
 		<li><a href="/notice">공지사항</a></li>
-		<li><a href="/listXML">전국 문화축제</a></li>
+		<li><a href="/festival">전국 문화축제</a></li>
 		<li><a href="/review">리뷰 게시판</a></li>
 		<li><a href="/free">자유 게시판</a></li>
 	</ul>
