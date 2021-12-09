@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/sch_box.css">
+</head>
+<body>
+     <!-- sub_sch_box -->
+     <div class="sub_sch_box" style="margin-bottom: 30px;">
+        <!-- city_box -->
+        <div class="city_box">
+            <ul class="month_list">
+                <li class="all">
+                    <input type="checkbox" name="month" id="month_all" class="hide" value="" onkeyup="enterkey('month','0'); return false;"  tabIndex="0">
+                    <label for="month_all"><span class="vchkbox"></span>전체</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month1" class="hide" value="01" onkeyup="enterkey('month','1'); return false;">
+                    <label for="month1"><span class="vchkbox"></span>1월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month2" class="hide" value="02" onkeyup="enterkey('month','2'); return false;">
+                    <label for="month2"><span class="vchkbox"></span>2월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month3" class="hide" value="03" onkeyup="enterkey('month','3'); return false;">
+                    <label for="month3"><span class="vchkbox"></span>3월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month4" class="hide" value="04" onkeyup="enterkey('month','4'); return false;">
+                    <label for="month4"><span class="vchkbox"></span>4월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month5" class="hide" value="05" onkeyup="enterkey('month','5'); return false;">
+                    <label for="month5"><span class="vchkbox"></span>5월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month6" class="hide" value="06" onkeyup="enterkey('month','6'); return false;">
+                    <label for="month6"><span class="vchkbox"></span>6월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month7" class="hide" value="07" onkeyup="enterkey('month','7'); return false;">
+                    <label for="month7"><span class="vchkbox"></span>7월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month8" class="hide" value="08" onkeyup="enterkey('month','8'); return false;">
+                    <label for="month8"><span class="vchkbox"></span>8월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month9" class="hide" value="09" onkeyup="enterkey('month','9'); return false;">
+                    <label for="month9"><span class="vchkbox"></span>9월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month10" class="hide" value="10" onkeyup="enterkey('month','10'); return false;">
+                    <label for="month10"><span class="vchkbox"></span>10월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month11" class="hide" value="11" onkeyup="enterkey('month','11'); return false;">
+                    <label for="month11"><span class="vchkbox"></span>11월</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="month" id="month12" class="hide" value="12" onkeyup="enterkey('month','12'); return false;">
+                    <label for="month12"><span class="vchkbox"></span>12월</label>
+                </li>
+            </ul>
+            <ul class="city_list">
+                <li class="all">
+                    <input type="checkbox" name="chk" id="chk_all" class="hide" value="" onkeyup="enterkey('chk','0'); return false;">
+                    <label for="chk_all"><span class="vchkbox"></span>전체</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk01" class="hide" value="01" onkeyup="enterkey('chk','01'); return false;">
+                    <label for="chk01"><span class="vchkbox"></span>경산</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk02" class="hide" value="02" onkeyup="enterkey('chk','02'); return false;">
+                    <label for="chk02"><span class="vchkbox"></span>경주</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk03" class="hide" value="03" onkeyup="enterkey('chk','03'); return false;">
+                    <label for="chk03"><span class="vchkbox"></span>고령</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk04" class="hide" value="04" onkeyup="enterkey('chk','04'); return false;">
+                    <label for="chk04"><span class="vchkbox"></span>구미</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk05" class="hide" value="05" onkeyup="enterkey('chk','05'); return false;">
+                    <label for="chk05"><span class="vchkbox"></span>군위</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk06" class="hide" value="06" onkeyup="enterkey('chk','06'); return false;">
+                    <label for="chk06"><span class="vchkbox"></span>김천</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk07" class="hide" value="07" onkeyup="enterkey('chk','07'); return false;">
+                    <label for="chk07"><span class="vchkbox"></span>문경</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk08" class="hide" value="08" onkeyup="enterkey('chk','08'); return false;">
+                    <label for="chk08"><span class="vchkbox"></span>봉화</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk09" class="hide" value="09" onkeyup="enterkey('chk','09'); return false;">
+                    <label for="chk09"><span class="vchkbox"></span>상주</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk10" class="hide" value="10" onkeyup="enterkey('chk','10'); return false;">
+                    <label for="chk10"><span class="vchkbox"></span>성주</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk11" class="hide" value="11" onkeyup="enterkey('chk','11'); return false;">
+                    <label for="chk11"><span class="vchkbox"></span>안동</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk12" class="hide" value="12" onkeyup="enterkey('chk','12'); return false;">
+                    <label for="chk12"><span class="vchkbox"></span>영덕</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk13" class="hide" value="13" onkeyup="enterkey('chk','13'); return false;">
+                    <label for="chk13"><span class="vchkbox"></span>영양</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk14" class="hide" value="14" onkeyup="enterkey('chk','14'); return false;">
+                    <label for="chk14"><span class="vchkbox"></span>영주</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk15" class="hide" value="15" onkeyup="enterkey('chk','15'); return false;">
+                    <label for="chk15"><span class="vchkbox"></span>영천</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk16" class="hide" value="16" onkeyup="enterkey('chk','16'); return false;">
+                    <label for="chk16"><span class="vchkbox"></span>예천</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk17" class="hide" value="17" onkeyup="enterkey('chk','17'); return false;">
+                    <label for="chk17"><span class="vchkbox"></span>울릉</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk18" class="hide" value="18" onkeyup="enterkey('chk','18'); return false;">
+                    <label for="chk18"><span class="vchkbox"></span>울진</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk19" class="hide" value="19" onkeyup="enterkey('chk','19'); return false;">
+                    <label for="chk19"><span class="vchkbox"></span>의성</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk20" class="hide" value="20" onkeyup="enterkey('chk','20'); return false;">
+                    <label for="chk20"><span class="vchkbox"></span>청도</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk21" class="hide" value="21" onkeyup="enterkey('chk','21'); return false;">
+                    <label for="chk21"><span class="vchkbox"></span>청송</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk22" class="hide" value="22" onkeyup="enterkey('chk','22'); return false;">
+                    <label for="chk22"><span class="vchkbox"></span>칠곡</label>
+                </li>
+                
+                <li>
+                    <input type="checkbox" name="cd_area" id="chk23" class="hide" value="23" onkeyup="enterkey('chk','23'); return false;">
+                    <label for="chk23"><span class="vchkbox"></span>포항</label>
+                </li>
+            </ul>
+        </div>
+</body>
+</html>
