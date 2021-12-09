@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>강원도 리뷰</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery.js"></script>
+    <title>축제정보</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <script src="/resources/js/jquery.js"></script>
     <style>
         * {
             margin: 0;
@@ -101,76 +102,28 @@
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <br>
-    <h1>강원도 리뷰 페이지</h1>
+    <h1><c:out value ="${location}"/> 축제 리스트</h1>
     <br>
     <table class="review" border="1" cellspacing="0" summary="게시판의 글 제목 리스트">
-        <caption>리뷰 게시판 리스트</caption>
         <colgroup>
             <col>
-            <col width="110">
-            <col width="100">
+            <col width="200">
             <col width="80">
         </colgroup>
         <thead>
             <tr>
                 <th scope="col">제목</th>
-                <th scope="col">글쓴이</th>
                 <th scope="col">날짜</th>
                 <th scope="col">조회수</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="title">
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                    <img src="images/ic_pic.gif" alt="첨부이미지" width="13" height="12" class="pic">
-                    <a class="comment" href="#">[5]</a>
-                    <img src="images/ic_new.gif" width="10" height="9" class="new" alt="새글">
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
-            <tr class="reviewreview">
-                <td class="title">
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
-            <tr class="reviewreview">
-                <td class="title" >
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
-            <tr class="reviewreview">
-                <td class="title" >
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
-            <tr class="reviewreview">
-                <td class="title" >
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
-            <tr class="reviewreview">
-                <td class="title" >
-                    <a href="#">제목재목제목제목메족메족제목</a>
-                </td>
-                <td class="name">글쓴ㄴ이</td>
-                <td class="date">2021/12/24</td>
-                <td class="hit">123</td>
-            </tr>
+           <c:forEach  var = "festival" items="${board}">
+           <tr>
+			<td class="title"><a href="#"><c:out value="${festival.name}" /></a></td>
+		<td>${festival.startdate} - ${festival.enddate}</td>
+			</tr>
+		</c:forEach>
         </tbody>
     </table>
     <br>

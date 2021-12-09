@@ -13,5 +13,6 @@ public interface FestivalMapper {
 
 	public void insertFestival(FestivalDTO festivalDTO);
 	public List<FestivalDTO> getlist();
+	public List<FestivalDTO> getlistwithlocation(FestivalDTO festivalDTO);
 	public FestivalDTO getDetail(String name);
 }

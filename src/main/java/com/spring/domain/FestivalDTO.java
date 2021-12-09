@@ -1,6 +1,8 @@
 package com.spring.domain;
 
 
+import java.sql.Date;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +23,6 @@ public class FestivalDTO {
 	private String rdnmadr;//도로명주소
 	private String lnmadr;//지번 주소
 	private String location;//지역분류
-	private String startdate;
-	private String enddate;
+	private Date startdate;
+	private Date enddate;
 }

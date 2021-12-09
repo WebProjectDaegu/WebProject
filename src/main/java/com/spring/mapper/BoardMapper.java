@@ -9,4 +9,7 @@ public interface BoardMapper {
 	public void registerBoard(BoardDTO BoardDTO);
 	public BoardDTO getBoard(BoardDTO BoardDTO);
 	public List<BoardDTO> getboardwithtype(String type);
+	public List<BoardDTO> getreviewwithlocation(BoardDTO boardDTO);
+
+	
 }

@@ -20,7 +20,7 @@ startdate date,
 enddate date
 );
 
-select * from festival order by location desc;
+select * from festival where location = "경상북도";
 
 --회원정보
 drop sequence memberseq;
@@ -44,7 +44,7 @@ create sequence boardseq;
 
 drop table board_table;
 create table board_table(
-writedate date ,
+writedate date DEFAULT sysdate,
 bbno integer primary key,
 title varchar2(100),
 writer varchar2(100),
@@ -66,12 +66,13 @@ drop table noticeboard;
 create table noticeboard(
 nno integer primary key,
 title varchar2(200),
-writedate date,
+writedate date DEFAULT sysdate,
 content varchar2(2000)
 );
-insert into noticeboard (nno,title,content,writedate) values (noticeseq.nextval,'제목','내용','20221222'); 
+insert into noticeboard (nno,title,content) values (noticeseq.nextval,'제목'||noticeseq.nextval,'내용'); 
 insert into noticeboard (nno,title,content,writedate) values (#{},#{},#{}); 
 
+select * from noticeboard;
 
 
 
@@ -85,9 +86,12 @@ insert into noticeboard (nno,title,content,writedate) values (#{},#{},#{});
 
 
 
-insert into board_table(writedate,bbno,title,writer,content,membern,name,location,type) values('19990505',boardseq.nextval,'제목','작성자','내용',112,'축제이름','대구','자유');
+insert into board_table(writedate,bbno,title,writer,content,membern,name,location,type,replyer) values('19990505',boardseq.nextval,'제목','작성자','내용',112,'축제이름','강원도','자유',3);
 select bbno,title,writer,visiter,replyer from board_table where type = '자유';
-
+select * from board_table;
+select * from board_table where location = "대구 and type='리뷰';
+select * from board_table where location = #{location} and type='리뷰';
+delete from board_table where type = 'review';
 
 
 

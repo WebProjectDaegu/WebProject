@@ -105,7 +105,7 @@
             <br>
             <div class="grid-container">
               <article id="3685" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=경기도">
                     경기도
                 </a>
                 <div class="location-image">
@@ -115,7 +115,7 @@
               </article>
           
               <article id="3688" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=강원도">
                     강원도
                 </a>
                 <div class="location-image">
@@ -125,7 +125,7 @@
               </article>
           
               <article id="3691" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=충청북도">
                     충청북도
                 </a>
                 <div class="location-image">
@@ -135,7 +135,7 @@
               </article>
           
               <article id="3694" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=충청남도">
                     충청남도
                 </a>
                 <div class="location-image">
@@ -145,7 +145,7 @@
               </article>
           
               <article id="3697" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=경상북도">
                     경상북도
                 </a>
                 <div class="location-image">
@@ -155,7 +155,7 @@
               </article>
           
               <article id="3700" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=경상남도">
                     경상남도
                 </a>
                 <div class="location-image">
@@ -166,7 +166,7 @@
               </article>
 
               <article id="3697" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=전라북도">
                     전라북도
                 </a>
                 <div class="location-image">
@@ -176,7 +176,7 @@
               </article>
           
               <article id="3700" class="location-listing">
-                <a class="location-title" href="#">
+                <a class="location-title" href="festivallist?location=전라남도">
                     전라남도
                 </a>
                 <div class="location-image">

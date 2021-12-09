@@ -19,6 +19,9 @@
 	<select id="getDetail" resultType="com.spring.domain.FestivalDTO">
 	select bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate from festival where name = #{name}
 	</select>
+	<select id="getlistwithlocation" resultType="com.spring.domain.FestivalDTO">
+		select * from festival where location = #{location}
+	</select>
 
 </mapper>
 	<!--  VALUES (#{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, #{latitude}, #{hardness}, #{startdate}, #{enddate})-->

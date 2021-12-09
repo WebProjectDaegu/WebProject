@@ -20,4 +20,8 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDTO> getBoardwithBoard(String type) {
 		return mapper.getboardwithtype(type);
 	}
+	@Override
+	public List<BoardDTO> getreviewWithlocation(BoardDTO boardDTO) {
+		return mapper.getreviewwithlocation(boardDTO);
+	}
 }
