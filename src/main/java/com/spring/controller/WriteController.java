@@ -26,11 +26,12 @@ public class WriteController {
 		service.RegisterBoard(boardDTO);
 		
 		String locationa = boardDTO.getLocation();
-		String loca ="redirect:/reviewlist?location=";
-				loca = loca.concat(locationa);
-				log.info(loca);
+		String loca ="redirect:/reviewlist?location=hhh";
+		
 		return loca;
 	}
+	
+	
 	@PostMapping("/freeConfirm")
 	public String freeConfirm(Model model,BoardDTO boardDTO) {
 		log.info(boardDTO.getLocation());

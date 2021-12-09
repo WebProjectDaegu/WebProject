@@ -20,7 +20,7 @@ startdate date,
 enddate date
 );
 
-select * from festival where location = "경상북도";
+select * from festival where location = '경상북도';
 
 --회원정보
 drop sequence memberseq;
