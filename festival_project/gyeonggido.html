@@ -11,6 +11,74 @@
         *{
             text-align: center;
         }
+
+        img {
+            width: 100%;
+            height: auto;
+            }
+
+            .grid-container {
+            margin-left: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 1em;
+            }
+
+            /* hover styles */
+            .location-listing {
+            position: relative;
+            }
+
+            .location-image {
+            line-height: 0;
+            overflow: hidden;
+            }
+
+            .location-image img {
+            filter: blur(0px);
+            transition: filter 0.3s ease-in;
+            transform: scale(1.1);
+            }
+
+            .location-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 1;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity .5s;
+            color: white;
+            background: rgba(221, 210, 213, 0.4);
+            
+            /* position the text in t’ middle*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+
+            .location-listing:hover .location-title {
+            opacity: 1;
+            }
+
+            .location-listing:hover .location-image img {
+            filter: blur(2px);
+            }
+
+
+            /* for touch screen devices */
+            @media (hover: none) { 
+            .location-title {
+                opacity: 1;
+            }
+            .location-image img {
+                filter: blur(2px);
+            }
+           }
     </style>
     <script>
         $(function(){
@@ -59,6 +127,27 @@
         <br>
         <br>
         <h1>문화축제 종류</h1>
+        <br>
+        <div class="grid-container">
+            <article id="3685" class="location-listing">
+              <a class="location-title" href="gyeonggi_donddu.html">
+                  동두천 락 페스티발
+              </a>
+              <div class="location-image">
+                <a href="#">
+                    <img width="300" height="169" src="images/rock_festival.jpg" alt="동두천"></a>
+              </div>
+            </article>
+
+            <article id="3685" class="location-listing">
+                <a class="location-title" href="gyeonggi_yeoju.html">
+                    여주 흥천 남한강 벚꽃축제
+                </a>
+                <div class="location-image">
+                  <a href="#">
+                      <img width="300" height="169" src="images/cherryblossom.jpg" alt="여주"></a>
+                </div>
+              </article>
     </section>
     <br>
         <br>
