@@ -12,9 +12,12 @@ import lombok.Setter;
 @Setter
 public class NoticeDTO {
 	private long nno;
+	private long replyer;
+	private long visiter;
 	private String title;
 	private Date writedate;
 	private String content;
+	private String writer;
 
 		
 }

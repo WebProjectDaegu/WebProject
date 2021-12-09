@@ -1,6 +1,8 @@
 package com.spring.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.sound.midi.MidiDevice.Info;
@@ -29,7 +31,7 @@ public class XMLtest {
 	@Autowired
 	XMLService service;
 	@Test
-	public void testa() throws IOException, ParseException {
+	public void testa() throws IOException, ParseException, java.text.ParseException {
 		
 		ReadFestival a = null;
 		List<FestivalDTO> b;
@@ -51,6 +53,7 @@ public class XMLtest {
 		
 	}
 			
+
 
 
 	

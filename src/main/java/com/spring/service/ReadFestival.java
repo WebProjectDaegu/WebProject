@@ -22,7 +22,7 @@ import com.spring.domain.FestivalDTO;
 public class ReadFestival {
 	
 	public int a =1;
-	public static List<FestivalDTO> read(int pageNo) throws IOException, ParseException {
+	public static List<FestivalDTO> read(int pageNo) throws IOException, ParseException, java.text.ParseException {
 		List<FestivalDTO> festivalList = new ArrayList<FestivalDTO>();
 		StringBuilder urlBuilder = new StringBuilder("http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
@@ -74,8 +74,8 @@ public class ReadFestival {
         	festivalDTO.setAuspcInstt((String) a.get("auspcInstt"));//주최지
         	festivalDTO.setLatitude((String) a.get("latitude"));//위도
         	festivalDTO.setHardness((String) a.get("longitude"));//경도
-        	festivalDTO.setStartdate((java.sql.Date) a.get("fstvlStartDate"));
-        	festivalDTO.setEnddate((java.sql.Date) a.get("fstvlEndDate"));
+        	festivalDTO.setStartdate((String) a.get("fstvlStartDate"));
+        	festivalDTO.setEnddate((String) a.get("fstvlEndDate"));
         	festivalDTO.setRdnmadr((String) a.get("rdnmadr"));//도로명주소
         	festivalDTO.setLnmadr((String) a.get("lnmadr"));//지번 주소
         	festivalDTO.setLocation("기타");

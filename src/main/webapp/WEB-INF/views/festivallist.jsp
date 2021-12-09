@@ -194,9 +194,9 @@
 		<tbody>
 			<c:forEach var="festival" items="${board}">
 				<tr>
-					<td class="title"><a href="#"><c:out
-								value="${festival.name}" /></a></td>
+					<td class="title"><a href="fesDetail?bno=${festival.bno}">${festival.name}</a></td>
 					<td>${festival.startdate}- ${festival.enddate}</td>
+					<td>${festival.visiter}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

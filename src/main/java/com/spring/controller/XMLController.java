@@ -67,6 +67,7 @@ public class XMLController {
 
 	@GetMapping("/notice")
 	public void notice(Model model) {
+		log.info(noticeService.getlist());
 		model.addAttribute("board",noticeService.getlist());
 	}
 

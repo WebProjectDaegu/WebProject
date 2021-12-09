@@ -12,11 +12,11 @@ import lombok.Getter;
 @Getter
 @Setter
 public class BoardDTO {
-	private long bbno;
-	private Date writedate;
-	private String title ="";
-	private String writer ="";
-	private String content="";
+	private long bbno;//번호
+	private Date writedate;//작성날짜
+	private String title ="";//제목
+	private String writer ="";//작성자
+	private String content="";//내용
 	private long membern = 0;//작성자 회원번호
 	private String name="";//축제이름(타입이리뷰일때)
 	private String location="";//지역분류

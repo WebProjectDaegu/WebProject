@@ -20,6 +20,7 @@ public class mappertest {
 	BoardDTO boardDTO = new BoardDTO() ;
 	FestivalDTO festivalDTO = new FestivalDTO();
 	FestivalMapper FestivalMapper;
+	NoticeMapper nmapper;
 	@Test
 	public void registerboard() {
 		boardDTO.setTitle("제목");
@@ -40,5 +41,8 @@ public class mappertest {
 		festivalDTO.setLocation("경상북도");
 		log.info(FestivalMapper.getlistwithlocation(festivalDTO));
 	}
-	
+	@Test
+	public void getnotice() {
+		log.info(nmapper.getNoticeList());
+	}
 }

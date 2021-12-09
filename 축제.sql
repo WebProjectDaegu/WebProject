@@ -1,11 +1,13 @@
 --축제정보
+select * from festival order by startdate desc;
+
 drop sequence festivalseq;
 create sequence festivalseq;
 
 drop table festival;
 create table festival (
 bno integer primary key,
-name varchar2(1000),
+name varchar2(1000) not null,
 opar varchar2(1000),
 fstvlCo varchar2(1000),
 phone varchar2(100),
@@ -16,13 +18,16 @@ hardness varchar2(100),
 lnmadr varchar2(1000),
 rdnmadr varchar2(1000),
 location varchar2(100),
+visiter integer default 0,
 startdate date,
-enddate date
-);
+enddate date);
+
 
 select * from festival where location = '경상북도';
 
 --회원정보
+select * from memberinfo;
+
 drop sequence memberseq;
 create sequence memberseq;
 
@@ -39,6 +44,8 @@ phone varchar(100),
 permission integer default 0);
 
 --게시판 정보
+select * from board_table;
+
 drop sequence boardseq;
 create sequence boardseq;
 
@@ -59,6 +66,9 @@ replyer integer default 0
 
 
 --공지사항 정보
+select * from noticeboard;
+
+select * from boardseq;
 drop SEQUENCE noticeseq;
 create SEQUENCE noticeseq;
 
@@ -67,9 +77,13 @@ create table noticeboard(
 nno integer primary key,
 title varchar2(200),
 writedate date DEFAULT sysdate,
-content varchar2(2000)
+content varchar2(2000),
+visiter integer default 0,
+writer varchar(200),
+replyer integer default 0
+
 );
-insert into noticeboard (nno,title,content) values (noticeseq.nextval,'제목'||noticeseq.nextval,'내용'); 
+insert into noticeboard (nno,title,content,writer) values (noticeseq.nextval,'제목'||noticeseq.nextval,'내용','관리자'); 
 insert into noticeboard (nno,title,content,writedate) values (#{},#{},#{}); 
 
 select * from noticeboard;
@@ -120,7 +134,7 @@ select * from memberinfo;
 
 insert into festival (bno, name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate) VALUES (festivalseq.nextval,'2021 전국생활문화축제','송도 해상공원','생활문화TV퐝퐝, 메타버스 퐝퐝 등 비대면 온라인 축제','054-289-7875','http://www.everydaylifeculture.net','문화체육관광부','36.0403049052','129.3766218071','2021-10-08','2021-10-10');
 create table reply_festival (name varchar2(100));
-select name,location,content,phone,homepage,local,latitude,hardness,startdate,enddate from festival order by startdate desc;
+select * from festival order by startdate desc;
 
 
  insert into festival (bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate) 
