@@ -153,10 +153,12 @@ button {
 	</h1>
 	<br>
 	<c:if test="${login != null }">
+	<c:if test="${login.permission >=4 }">
 	<div id="write">
 		<button type="button" id="write_btn"
 			onclick="location.href='/noticewrite'">작성하기</button>
 	</div>
+	</c:if>
 	</c:if>
 	<br>
 	<br>

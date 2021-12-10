@@ -36,6 +36,12 @@ birth date,
 phone varchar(100), 
 permission integer default 0);
 
+insert into memberinfo 
+(membern,id,password,name,gender,nickname,birth,phone,permission) values
+(memberseq.nextval,'admin','1234','홍길동','여성','어드민','20000101','01011111111',5);
+insert into memberinfo 
+(membern,id,password,name,gender,nickname,birth,phone,permission) values
+(memberseq.nextval,'user','1234','이길동','남성','일반유저','22000101','01022222222',0);
 --게시판 DB
 drop sequence boardseq;
 create sequence boardseq;
@@ -54,3 +60,5 @@ type varchar2(200),
 visiter integer default 0,
 replyer integer default 0
 );
+
+commit;
