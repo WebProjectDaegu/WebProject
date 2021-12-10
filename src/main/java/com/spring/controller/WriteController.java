@@ -1,5 +1,8 @@
 package com.spring.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -21,12 +24,12 @@ public class WriteController {
 	@Autowired
 	BoardService service;
 	@PostMapping("/reviewConfirm")
-	public String reviewConfrim(Model model,BoardDTO boardDTO) {
+	public String reviewConfrim(Model model,BoardDTO boardDTO) throws UnsupportedEncodingException {
 		log.info(boardDTO.getLocation());
 		service.RegisterBoard(boardDTO);
 		
-		String locationa = boardDTO.getLocation();
-		String loca ="redirect:/reviewlist?location=hhh";
+		String location = boardDTO.getLocation();
+		String loca ="redirect:/reviewlist?location="+URLEncoder.encode(location, "UTF-8");
 		
 		return loca;
 	}
@@ -40,4 +43,11 @@ public class WriteController {
 		return "redirect:/free";
 	}
 	
+	@PostMapping("/noticeConfirm")
+	public String noticeConfirms(Model model,BoardDTO boardDTO) {
+		log.info(boardDTO.getLocation());
+		service.RegisterBoard(boardDTO);
+
+		return "redirect:/notice";
+	}
 }

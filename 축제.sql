@@ -65,28 +65,6 @@ replyer integer default 0
 );
 
 
---공지사항 정보
-select * from noticeboard;
-
-select * from boardseq;
-drop SEQUENCE noticeseq;
-create SEQUENCE noticeseq;
-
-drop table noticeboard;
-create table noticeboard(
-nno integer primary key,
-title varchar2(200),
-writedate date DEFAULT sysdate,
-content varchar2(2000),
-visiter integer default 0,
-writer varchar(200),
-replyer integer default 0
-
-);
-insert into noticeboard (nno,title,content,writer) values (noticeseq.nextval,'제목'||noticeseq.nextval,'내용','관리자'); 
-insert into noticeboard (nno,title,content,writedate) values (#{},#{},#{}); 
-
-select * from noticeboard;
 
 
 
@@ -97,6 +75,8 @@ select * from noticeboard;
 
 
 
+insert into board_table(writedate,bbno,title,writer,content,membern,name,location,type,replyer) 
+values('19990505',boardseq.nextval,'제목','작성자','내용',112,'축제이름','강원도','공지',3);
 
 
 

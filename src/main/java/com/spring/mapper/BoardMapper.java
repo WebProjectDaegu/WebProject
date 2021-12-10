@@ -10,6 +10,7 @@ public interface BoardMapper {
 	public BoardDTO getBoard(BoardDTO BoardDTO);
 	public List<BoardDTO> getboardwithtype(String type);
 	public List<BoardDTO> getreviewwithlocation(BoardDTO boardDTO);
+	public int getTotal();
 
 	
 }

@@ -21,7 +21,6 @@ import org.w3c.dom.NodeList;
 import com.spring.domain.BoardDTO;
 import com.spring.domain.FestivalDTO;
 import com.spring.service.BoardService;
-import com.spring.service.NoticeService;
 import com.spring.service.ReadFestival;
 import com.spring.service.XMLService;
 import com.spring.service.XMLServiceimpl;
@@ -39,7 +38,7 @@ public class XMLController {
 	@Autowired
 	BoardService boardservice;
 	@Autowired
-	NoticeService noticeService;
+
 
 	@GetMapping("/write")
 	public void WriteAbortedException() {
@@ -65,10 +64,14 @@ public class XMLController {
 
 	}
 
+	
 	@GetMapping("/notice")
 	public void notice(Model model) {
-		log.info(noticeService.getlist());
-		model.addAttribute("board",noticeService.getlist());
+		model.addAttribute("board",boardservice.getBoardwithBoard("공지"));
+	}
+	@GetMapping("/noticewrite")
+	public void noticewrite() {
+		
 	}
 
 	

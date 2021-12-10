@@ -18,4 +18,5 @@
 		select count(id) from memberinfo where id = #{id}
 	</select>
 
+
 </mapper>

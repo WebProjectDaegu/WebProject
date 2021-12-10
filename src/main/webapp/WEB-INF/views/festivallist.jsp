@@ -17,7 +17,10 @@
 	border-radius: 5px;
 	box-sizing: border-box;
 	font-family: "Noto Sans KR", sans-serif;
-	text-align: center;
+
+}
+#video{
+	text-align : center
 }
 
 .review, .review th, .review td {
@@ -117,6 +120,7 @@
 		홍보영상
 	</h1>
 	<br>
+	<div id="video">
 	<c:choose>
 		<c:when test="${location=='경기도' }">
 			<iframe width="560" height="315"
@@ -160,12 +164,8 @@
 		    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qox-xzeHCcI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </iframe>
 		</c:when>
-
-
-
-
 	</c:choose>
-
+</div>
 	</iframe>
 	<br>
 	<br>

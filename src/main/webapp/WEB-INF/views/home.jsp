@@ -58,22 +58,22 @@
 
     <section id="info">
         <div id="div1">
-            <button type="button" id="notice_btn" onclick="location.href='festival_notice.html'">
+            <button type="button" id="notice_btn" onclick="location.href='notice'">
                 공지사항
             </button>
         </div>
         <div id="div2">
-            <button type="button" id="local_btn" onclick="location.href='festival_local_info.html'">
+            <button type="button" id="local_btn" onclick="location.href='festival'">
                 전국 문화축제
             </button>
         </div>
         <div id="div3">
-            <button type="button" id="review_btn" onclick="location.href='festival_review.html'">
+            <button type="button" id="review_btn" onclick="location.href='review'">
                 리뷰 게시판
             </button>
         </div>
         <div id="div4">
-            <button type="button" id="free_btn" onclick="location.href='festival_free.html'">
+            <button type="button" id="free_btn" onclick="location.href='free'">
                 자유 게시판
             </button>
         </div>

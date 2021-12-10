@@ -53,6 +53,7 @@ header {
 }
 #join_btn, #login_btn {
   float: right;
+  color:black;
   margin-right: 25px;
   margin-top: 7px;
   display: block;
@@ -62,6 +63,7 @@ header {
   outline: 0;
   background-color: #f1ddc5;
 }
+
 /*네비게이션*/
 a:link,
 a:hover,

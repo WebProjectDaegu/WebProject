@@ -3,14 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.BoardMapper">
+
+
+
 	<insert id="registerBoard">
 		insert into board_table (bbno,title,writer,content,membern,name,type,location) values(boardseq.nextval,#{title},#{writer},#{content},#{membern},#{name},#{type},#{location})
 	</insert>
 	<select id="getboardwithtype" resultType="com.spring.domain.BoardDTO">
-		select * from board_table where type = #{type}
+		select * from board_table where type = #{type} order by bbno desc
 	</select>
 	<select id="getreviewwithlocation" resultType="com.spring.domain.BoardDTO">
-		select * from board_table where location = #{location} and type='리뷰'
+		select * from board_table where location = #{location} and type='리뷰' order by bbno desc
+	</select>
+		<select id="getTotal" resultType="int">
+		select count(bbno) from board_table
 	</select>
 
 
