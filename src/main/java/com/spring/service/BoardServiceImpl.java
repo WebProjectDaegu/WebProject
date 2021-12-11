@@ -2,6 +2,7 @@ package com.spring.service;
 
 
 import com.spring.domain.BoardDTO;
+import com.spring.domain.PageDTO;
 import com.spring.mapper.BoardMapper;
 
 import java.util.List;
@@ -17,11 +18,17 @@ public class BoardServiceImpl implements BoardService {
 		mapper.registerBoard(boardDTO);
 	}
 	@Override
-	public List<BoardDTO> getBoardwithBoard(String type) {
-		return mapper.getboardwithtype(type);
+	public List<BoardDTO> getBoardwithBoard(BoardDTO boardDTO,PageDTO pageDTO) {
+		return mapper.getboardwithtype(boardDTO,pageDTO);
 	}
 	@Override
 	public List<BoardDTO> getreviewWithlocation(BoardDTO boardDTO) {
 		return mapper.getreviewwithlocation(boardDTO);
 	}
+	@Override
+	public int gettotal(BoardDTO boardDTO, PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return mapper.getTotal(boardDTO, pageDTO);
+	}
+
 }

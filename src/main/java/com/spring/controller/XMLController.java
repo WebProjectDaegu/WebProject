@@ -20,6 +20,7 @@ import org.w3c.dom.NodeList;
 
 import com.spring.domain.BoardDTO;
 import com.spring.domain.FestivalDTO;
+import com.spring.domain.PageDTO;
 import com.spring.service.BoardService;
 import com.spring.service.ReadFestival;
 import com.spring.service.XMLService;
@@ -66,8 +67,9 @@ public class XMLController {
 
 	
 	@GetMapping("/notice")
-	public void notice(Model model) {
-		model.addAttribute("board",boardservice.getBoardwithBoard("공지"));
+	public void notice(Model model,PageDTO pageDTO,BoardDTO boardDTO) {
+		boardDTO.setType("공지");
+		model.addAttribute("board",boardservice.getBoardwithBoard(boardDTO,pageDTO));
 	}
 	@GetMapping("/noticewrite")
 	public void noticewrite() {
@@ -113,9 +115,15 @@ public class XMLController {
 	
 	
 	@GetMapping("/free")
-	public void free(Model model) {
-		log.info(boardservice.getBoardwithBoard("자유"));
-		model.addAttribute("board",boardservice.getBoardwithBoard("자유"));
+	public void free(Model model,PageDTO pageDTO,BoardDTO boardDTO) {
+		boardDTO.setType("자유");
+		pageDTO.pagemaker(boardservice.gettotal(boardDTO, pageDTO));
+		log.info(pageDTO);
+		log.info(boardDTO);
+		log.info(boardservice.getBoardwithBoard(boardDTO,pageDTO));
+		
+		model.addAttribute("page",pageDTO);
+		model.addAttribute("board",boardservice.getBoardwithBoard(boardDTO,pageDTO));
 		
 	}
 	@GetMapping("/freewrite")

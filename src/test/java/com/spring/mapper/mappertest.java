@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.spring.domain.BoardDTO;
 import com.spring.domain.FestivalDTO;
 import com.spring.domain.MemberDTO;
+import com.spring.domain.PageDTO;
 
 import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,7 +35,13 @@ public class mappertest {
 	
 	@Test
 	public void getlist() {
-		log.info(mapper.getboardwithtype("자유"));
+		PageDTO pageDTO = new PageDTO(500);
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setType("자유");
+		pageDTO.setPageNum(1);
+		pageDTO.setSearchtype("W");
+		pageDTO.setKeyword("익명");
+		log.info(mapper.getboardwithtype(boardDTO,pageDTO));
 	}
 	@Test
 	public void festlist() {

@@ -2,17 +2,20 @@ package com.spring.domain;
 
 import org.springframework.web.util.UriComponentsBuilder;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
+@Data
 @ToString
 public class PageDTO {
 	private int startPage;
 	private int endPage;
 	private boolean  prev,next;
+	private int realEnd;
 	
 	private int total; 
 	private int pageNum = 1;
@@ -32,17 +35,19 @@ public class PageDTO {
 				.queryParam("keyword", this.keyword);
 		return builder.toUriString();
 	}
+	public PageDTO() {
+		
+	}
 	
 	
-	
-	public PageDTO(int total) {
+	public void pagemaker(int total) {
 		this.total = total;
 		
 		
 		endPage = (int)(Math.ceil(pageNum/10.0))*10;
 		startPage = endPage-9;
 		
-		int realEnd = (int)(Math.ceil((total*1.0)/amount));
+		realEnd = (int)(Math.ceil((total*1.0)/amount));
 		
 		if(realEnd<= this.endPage) {
 			this.endPage = realEnd;

@@ -148,9 +148,7 @@ button {
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<br>
-	<h1>
-		자유 게시판
-	</h1>
+	<h1>자유 게시판</h1>
 	<br>
 
 	<div id="write">
@@ -177,44 +175,47 @@ button {
 				<th scope="col">조회수</th>
 			</tr>
 		</thead>
-<tr>
-<c:forEach  var = "board" items="${board}">
-			<td class="title"><a href="#"><c:out value="${board.title}" /></a> <img
-				src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13"
-				height="12" class="pic">
-				<c:if test="${board.replyer > 0}">
-				<a class="comment" href="#">[<c:out value="${board.replyer }"/>]</a> 
-				</c:if> <img
-				src="/resources/images/ic_new.gif" width="10" height="9" class="new"
-				alt="새글"></td>
-			<td class="name"><c:out value="${board.writer}" /></td>
-			<td class="date"><c:out value="${board.writedate}" /></td>
-			<td class="hit"><c:out value="${board.visiter}" /></td>
-			</tr>
-</c:forEach>
+		<tr>
+			<c:forEach var="board" items="${board}">
+				<td class="title"><a href="#"><c:out value="${board.title}" /></a>
+					<img src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13"
+					height="12" class="pic"> <c:if test="${board.replyer > 0}">
+						<a class="comment" href="#">[<c:out value="${board.replyer }" />]
+						</a>
+					</c:if> <img src="/resources/images/ic_new.gif" width="10" height="9"
+					class="new" alt="새글"></td>
+				<td class="name"><c:out value="${board.writer}" /></td>
+				<td class="date"><c:out value="${board.writedate}" /></td>
+				<td class="hit"><c:out value="${board.visiter}" /></td>
+		</tr>
+		</c:forEach>
 	</table>
 	<div id="search">
-		<form>
+		<form action="free">
 			<select name="searchtype">
 				<option value="T">제목</option>
 				<option value="W">글쓴이</option>
 				<option value="C">내용</option>
 			</select> <input type="text" name="keyword" size="40" required="required">
-			<button type = "submit" class="btn button">검색</button>
+			<button type="submit" class="btn button">검색</button>
 		</form>
 	</div>
 	<br>
 	<br>
 	<div class="wrap_paging">
-		<a href="#" class="first" style="border: 1px solid black">맨처음</a> <a
-			href="#" class="prev" style="border: 1px solid black">이전</a> <a
-			href="#" class="on view">[1]</a> <a href="#" class="view">[2]</a> <a
+		<a href="#" class="first" style="border: 1px solid black">맨처음</a>
+		<c:if test="${page.prev}">
+			<a href="#" class="prev" style="border: 1px solid black">이전</a>
+		</c:if>
+		<a href="#" class="on view">[1]</a> <a href="#" class="view">[2]</a> <a
 			href="#" class="view">[3]</a> <a href="#" class="view">[4]</a> <a
 			href="#" class="view">[5]</a> <a href="#" class="view">[6]</a> <a
 			href="#" class="view">[7]</a> <a href="#" class="view">[8]</a> <a
-			href="#" class="view">[9]</a> <a href="#" class="view">[10]</a> <a
-			href="#" class="next" style="border: 1px solid black">다음</a> <a
-			href="#" class="last" style="border: 1px solid black">마지막</a>
+			href="#" class="view">[9]</a> <a href="#" class="view">[10]</a>
+			<c:if test="${page.next}">
+			<a	href="#" class="next" style="border: 1px solid black">다음</a> 
+			</c:if>
+			<a href="/free?pageNum${page.realEnd }" class="last" style="border: 1px solid black">마지막</a>
 	</div>
 	<br>
 	<div id="wrap">

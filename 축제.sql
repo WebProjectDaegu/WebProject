@@ -66,7 +66,7 @@ replyer integer default 0
 
 
 
-
+select count(bbno) from board_table;
 
 
 
@@ -79,7 +79,7 @@ insert into board_table(writedate,bbno,title,writer,content,membern,name,locatio
 values('19990505',boardseq.nextval,'제목','작성자','내용',112,'축제이름','강원도','공지',3);
 
 
-
+select * from (select rownum, * from board_table);
 insert into board_table(writedate,bbno,title,writer,content,membern,name,location,type,replyer) values('19990505',boardseq.nextval,'제목','작성자','내용',112,'축제이름','강원도','자유',3);
 select bbno,title,writer,visiter,replyer from board_table where type = '자유';
 select * from board_table;
