@@ -80,7 +80,8 @@ values('19990505',boardseq.nextval,'제목','작성자','내용',112,'축제이름','강원도
 
 
 select * from (select rownum, * from board_table);
-insert into board_table(writedate,bbno,title,writer,content,membern,name,location,type,replyer) values('19990505',boardseq.nextval,'제목','작성자','내용',112,'축제이름','강원도','자유',3);
+delete from board_table where type='자유';
+insert into board_table(writedate,bbno,title,writer,content,membern,name,location,type,replyer) values('19990505',boardseq.nextval,'제목'||boardseq.nextval,'작성자'||boardseq.nextval,'내용',112,'축제이름','강원도','자유',3);
 select bbno,title,writer,visiter,replyer from board_table where type = '자유';
 select * from board_table;
 select * from board_table where location = "대구 and type='리뷰';

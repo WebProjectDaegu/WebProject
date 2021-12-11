@@ -35,12 +35,15 @@ public class mappertest {
 	
 	@Test
 	public void getlist() {
-		PageDTO pageDTO = new PageDTO(500);
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.pagemaker(500);
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO.setType("자유");
-		pageDTO.setPageNum(1);
-		pageDTO.setSearchtype("W");
-		pageDTO.setKeyword("익명");
+		pageDTO.setPageNum(2);
+		//pageDTO.setSearchtype("W");
+		//pageDTO.setKeyword("익명");
+		log.info(pageDTO);
+		log.info(boardDTO);
 		log.info(mapper.getboardwithtype(boardDTO,pageDTO));
 	}
 	@Test

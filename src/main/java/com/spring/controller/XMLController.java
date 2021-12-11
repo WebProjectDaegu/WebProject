@@ -69,6 +69,12 @@ public class XMLController {
 	@GetMapping("/notice")
 	public void notice(Model model,PageDTO pageDTO,BoardDTO boardDTO) {
 		boardDTO.setType("공지");
+		pageDTO.pagemaker(boardservice.gettotal(boardDTO, pageDTO));
+		log.info(pageDTO);
+		log.info(boardDTO);
+		log.info(boardservice.getBoardwithBoard(boardDTO,pageDTO));
+		
+		model.addAttribute("page",pageDTO);
 		model.addAttribute("board",boardservice.getBoardwithBoard(boardDTO,pageDTO));
 	}
 	@GetMapping("/noticewrite")
@@ -84,7 +90,7 @@ public class XMLController {
 
 	}
 	@GetMapping("/reviewlist")
-	public void getreviewlist(Model model,BoardDTO boardDTO) {
+	public void getreviewlist(Model model,BoardDTO boardDTO,PageDTO pageDTO) {
 		log.info(boardDTO.getLocation());
 		model.addAttribute("board",boardDTO);
 		log.info(boardservice.getreviewWithlocation(boardDTO));

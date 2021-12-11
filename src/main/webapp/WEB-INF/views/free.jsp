@@ -203,21 +203,32 @@ button {
 	<br>
 	<br>
 	<div class="wrap_paging">
-		<a href="#" class="first" style="border: 1px solid black">맨처음</a>
-		<c:if test="${page.prev}">
-			<a href="#" class="prev" style="border: 1px solid black">이전</a>
+		<c:if test="${page.startPage >10 }">
+			<a href="free" class="first" style="border: 1px solid black">맨처음</a>
 		</c:if>
-		<a href="#" class="on view">[1]</a> <a href="#" class="view">[2]</a> <a
-			href="#" class="view">[3]</a> <a href="#" class="view">[4]</a> <a
-			href="#" class="view">[5]</a> <a href="#" class="view">[6]</a> <a
-			href="#" class="view">[7]</a> <a href="#" class="view">[8]</a> <a
-			href="#" class="view">[9]</a> <a href="#" class="view">[10]</a>
-			<c:if test="${page.next}">
-			<a	href="#" class="next" style="border: 1px solid black">다음</a> 
-			</c:if>
-			<a href="/free?pageNum${page.realEnd }" class="last" style="border: 1px solid black">마지막</a>
+		<c:if test="${page.prev}">
+			<a href="free?pageNum=${page.startPage-1 }" class="prev"
+				style="border: 1px solid black">이전</a>
+		</c:if>
+		<c:forEach var="pageN" begin="${page.startPage }"
+			end="${page.endPage }">
+			<a href="free?pageNum=${pageN}"
+				class="<c:if test ='${pageN == page.pageNum }'>on</c:if> view">[${pageN}]</a>
+		</c:forEach>
+		<c:if test="${page.next}">
+			<a href="free?pageNum=${page.endPage+1 }" class="next"
+				style="border: 1px solid black">다음</a>
+		</c:if>
+		<c:if test="${page.endPage <page.realEnd}">
+			<a href="free?pageNum=${page.realEnd }" class="last"
+				style="border: 1px solid black">마지막</a>
+		</c:if>
 	</div>
 	<br>
+	<form action="free" name="pagesave">
+		<input type="hidden" name="keyword" value="${page.keyword}"> <input
+			type="hidden" name="searchtype" value="${page.searchtype}">
+	</form>
 	<div id="wrap">
 		<footer>footer</footer>
 	</div>

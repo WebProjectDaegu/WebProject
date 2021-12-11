@@ -28,27 +28,19 @@
 		insert into board_table (bbno,title,writer,content,membern,name,type,location) values(boardseq.nextval,#{title},#{writer},#{content},#{membern},#{name},#{type},#{location})
 	</insert>
 	<select id="getboardwithtype" resultType="com.spring.domain.BoardDTO">
-		select * from board_table where
-		 <include refid="critreia"></include>
-		  type = #{arg0.type} order by bbno desc
-		  
-		  
-		  
-		  
-		<![CDATA[select *
-		from 
-		(
+		select * from 
+		<![CDATA[(
 		SELECT 
-		ROWNUM * 
+		ROWNUM rn,board_table.* 
 		FROM 
-		tbl_board 
+		board_table 
 		WHERE
 		]]>
 		<include refid="critreia"></include>
 		<![CDATA[
-		ROWNUM<=#{arg1.pageNum}*#{arg1.amount} and type = #{arg0.type}
+		ROWNUM<=#{arg1.pageNum}*#{arg1.amount} and type = #{arg0.type} order by bbno desc
 		)
-		WHERE RN > (#{arg1.pageNum}-1)*#{arg1.amount} order by bbno desc
+		WHERE rn > (#{arg1.pageNum}-1)*#{arg1.amount} 
 		]]>  
 		  
 		  
