@@ -180,18 +180,18 @@ button {
 			</tr>
 		</thead>
 <tr>
-<c:forEach  var = "review" items="${board}">
-			<td class="title"><a href="#"><c:out value="${review.title}" /></a> <img
+<c:forEach  var = "board" items="${board}">
+			<td class="title"><a href="#"><c:out value="${board.title}" /></a> <img
 				src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13"
 				height="12" class="pic">
-				<c:if test="${review.replyer > 0}">
-				<a class="comment" href="#">[<c:out value="${review.replyer }"/>]</a> 
+				<c:if test="${board.replyer > 0}">
+				<a class="comment" href="#">[<c:out value="${board.replyer }"/>]</a> 
 				</c:if> <img
 				src="/resources/images/ic_new.gif" width="10" height="9" class="new"
 				alt="새글"></td>
-			<td class="name"><c:out value="${review.writer}" /></td>
-			<td class="date"><c:out value="${review.writedate}" /></td>
-			<td class="hit"><c:out value="${review.visiter}" /></td>
+			<td class="name"><c:out value="${board.writer}" /></td>
+			<td class="date"><c:out value="${board.writedate}" /></td>
+			<td class="hit"><c:out value="${board.visiter}" /></td>
 			</tr>
 </c:forEach>
 	</table>

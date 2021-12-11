@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자유게시판 글 작성하기</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <script src="/resources/js/jquery.js"></script>
     <style>
         table {
             text-align: center;

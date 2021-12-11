@@ -35,6 +35,7 @@ import lombok.extern.log4j.Log4j;
 public class XMLController {
 	@Autowired
 	XMLService service;
+	@Autowired
 	BoardService boardservice;
 	
 
