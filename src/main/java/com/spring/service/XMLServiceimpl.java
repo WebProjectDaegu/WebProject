@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.domain.BoardDTO;
 import com.spring.domain.FestivalDTO;
+import com.spring.domain.PageDTO;
 import com.spring.mapper.FestivalMapper;
 @Service
 public class XMLServiceimpl implements XMLService {
@@ -22,9 +23,14 @@ public class XMLServiceimpl implements XMLService {
 		return mapper.getDetail(name);
 	}
 	@Override
-	public List<FestivalDTO> getListwithlocation(FestivalDTO festivalDTO) {
+	public List<FestivalDTO> getListwithlocation(FestivalDTO festivalDTO,PageDTO pageDTO) {
 		// TODO Auto-generated method stub
-		return mapper.getlistwithlocation(festivalDTO);
+		return mapper.getlistwithlocation(festivalDTO,pageDTO);
+	}
+	@Override
+	public int gettotal(FestivalDTO festivalDTO, PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return mapper.gettotal(festivalDTO, pageDTO);
 	}
 
 

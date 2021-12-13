@@ -17,10 +17,10 @@
 	border-radius: 5px;
 	box-sizing: border-box;
 	font-family: "Noto Sans KR", sans-serif;
-
 }
-#video{
-	text-align : center
+
+#video {
+	text-align: center
 }
 
 .review, .review th, .review td {
@@ -92,6 +92,44 @@
 .review tr.reviewreview .title a {
 	padding-left: 16px;
 	background: url(images/ic_reply.png) 0 1px no-repeat;
+	/* search */ # search { text-align : center;
+	padding-top: 50px;
+}
+/* search */
+#search {
+	text-align: center;
+	padding-top: 50px;
+}
+
+button {
+	color: white;
+	background-color: black;
+	border: 0;
+	outline: 0;
+	width: 50px;
+	height: 20px;
+}
+/* 작성하기 버튼 */
+#write_btn {
+	float: right;
+	width: 80px;
+	height: 25px;
+	background-color: #f1ddc5;
+	color: black;
+	margin-right: 220px;
+}
+/* 하단 페이징 */
+.wrap_paging {
+	padding: 0;
+	border: 0;
+	list-style: none;
+	font-size: 16px;
+	text-align: center;
+}
+
+.wrap_paging a.on {
+	color: #ff0000;
+	font-weight: bold;
 }
 </style>
 <script>
@@ -116,56 +154,76 @@
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<br>
 	<h1>
-		<c:out value="${location}" />
+		<c:out value="${board0.location}" />
 		홍보영상
 	</h1>
 	<br>
 	<div id="video">
-	<c:choose>
-		<c:when test="${location=='경기도' }">
-			<iframe width="560" height="315"
-				src="https://www.youtube.com/embed/EeLPX7r7iic"
-				title="YouTube video player" frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen> </iframe>
-		</c:when>
-		<c:when test="${location=='강원도' }">
-			<iframe width="560" height="315"
-				src="https://www.youtube.com/embed/0czu3sGpQCQ"
-				title="YouTube video player" frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
-			</iframe>
-		</c:when>
-		<c:when test="${location=='충청북도' }">
-			<iframe width="560" height="315"
-				src="https://www.youtube.com/embed/s1EzVfxaOaA"
-				title="YouTube video player" frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
-		</c:when>
-		<c:when test="${location=='충청남도' }">
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/aTIZY8zy1bY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </iframe>
-		</c:when>
-		<c:when test="${location=='경상북도' }">
-		 <iframe width="560" height="315" src="https://www.youtube.com/embed/V74PRN1gE0s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </iframe>
-		</c:when>
-		<c:when test="${location=='경상남도' }">
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/uMVewNwVBis" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </iframe>
-		</c:when>
-		<c:when test="${location=='전라남도' }">
-		 <iframe width="560" height="315" src="https://www.youtube.com/embed/jR93T1Q36sw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </iframe>
-		</c:when>
-		<c:when test="${location=='전라북도' }">
-		    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qox-xzeHCcI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </iframe>
-		</c:when>
-	</c:choose>
-</div>
+		<c:choose>
+			<c:when test="${board0.location=='경기도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/EeLPX7r7iic"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen> </iframe>
+			</c:when>
+			<c:when test="${board0.location=='강원도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/0czu3sGpQCQ"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				</iframe>
+			</c:when>
+			<c:when test="${board0.location=='충청북도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/s1EzVfxaOaA"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</c:when>
+			<c:when test="${board0.location=='충청남도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/aTIZY8zy1bY"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				</iframe>
+			</c:when>
+			<c:when test="${board0.location=='경상북도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/V74PRN1gE0s"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				</iframe>
+			</c:when>
+			<c:when test="${board0.location=='경상남도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/uMVewNwVBis"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				</iframe>
+			</c:when>
+			<c:when test="${board0.location=='전라남도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/jR93T1Q36sw"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				</iframe>
+			</c:when>
+			<c:when test="${board0.location=='전라북도' }">
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/Qox-xzeHCcI"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				</iframe>
+			</c:when>
+		</c:choose>
+	</div>
 	</iframe>
 	<br>
 	<br>
@@ -173,7 +231,7 @@
 	<br>
 	<br>
 	<h1>
-		<c:out value="${location}" />
+		<c:out value="${board0.location}" />
 		축제 리스트
 	</h1>
 	<br>
@@ -192,15 +250,59 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="festival" items="${board}">
+			<c:forEach var="festival" items="${boards}">
 				<tr>
 					<td class="title"><a href="fesDetail?bno=${festival.bno}">${festival.name}</a></td>
-					<td>${festival.startdate}- ${festival.enddate}</td>
+					<td>${festival.startdate}-${festival.enddate}</td>
 					<td>${festival.visiter}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<div id="search">
+		<form action="festivallist">
+			<select name="searchtype">
+				<option value="T">제목</option>
+				<option value="W">글쓴이</option>
+				<option value="C">내용</option>
+			</select> <input type="text" name="keyword" size="40" required="required">
+			<input type="hidden" value="${board0.location}" name="location">
+			<button type="submit" class="btn button">검색</button>
+		</form>
+	</div>
+	<br>
+	<br>
+	<div class="wrap_paging">
+		<c:if test="${page.startPage >10 }">
+			<a href="festivallist?location=${board0.location }" class="first"
+				style="border: 1px solid black">맨처음</a>
+		</c:if>
+		<c:if test="${page.prev}">
+			<a
+				href="festivallist?pageNum=${page.startPage-1 }&location=${board0.location }"
+				class="prev" style="border: 1px solid black">이전</a>
+		</c:if>
+		<c:forEach var="pageN" begin="${page.startPage }"
+			end="${page.endPage }">
+			<a href="festivallist?pageNum=${pageN}&location=${board0.location }"
+				class="<c:if test ='${pageN == page.pageNum }'>on</c:if> view">[${pageN}]</a>
+		</c:forEach>
+		<c:if test="${page.next}">
+			<a
+				href="festivallist?pageNum=${page.endPage+1 }&location=${board0.location }"
+				class="next" style="border: 1px solid black">다음</a>
+		</c:if>
+		<c:if test="${page.endPage <page.realEnd}">
+			<a
+				href="festivallist?pageNum=${page.realEnd }&location=${board0.location }"
+				class="last" style="border: 1px solid black">마지막</a>
+		</c:if>
+	</div>
+	<br>
+	<form action="festivallist" name="pagesave">
+		<input type="hidden" name="keyword" value="${page.keyword}"> <input
+			type="hidden" name="searchtype" value="${page.searchtype}">
+	</form>
 	<br>
 	<div id="wrap">
 		<footer>footer</footer>

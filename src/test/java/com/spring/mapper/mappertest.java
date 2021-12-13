@@ -36,10 +36,13 @@ public class mappertest {
 	@Test
 	public void getlist() {
 		PageDTO pageDTO = new PageDTO();
-		pageDTO.pagemaker(500);
 		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setType("자유");
+		boardDTO.setType("리뷰");
+		boardDTO.setLocation("경상북도");
 		pageDTO.setPageNum(2);
+		pageDTO.setSearchtype("T");
+		pageDTO.setKeyword("제목");
+		pageDTO.pagemaker(mapper.getTotal(boardDTO, pageDTO));
 		//pageDTO.setSearchtype("W");
 		//pageDTO.setKeyword("익명");
 		log.info(pageDTO);
@@ -48,8 +51,9 @@ public class mappertest {
 	}
 	@Test
 	public void festlist() {
+		PageDTO pageDTO = new PageDTO();
 		festivalDTO.setLocation("경상북도");
-		log.info(FestivalMapper.getlistwithlocation(festivalDTO));
+		log.info(FestivalMapper.getlistwithlocation(festivalDTO,pageDTO));
 	}
 
 }

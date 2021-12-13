@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.BoardMapper">
-<sql id="critreia">
-		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+	<sql id="critreia">
+		<trim prefix="(" suffix=") and" prefixOverrides="OR">
 			<foreach item='type' collection="arg1.searchTypeArr">
 				<trim prefix="OR">
 					<choose>
@@ -21,13 +21,28 @@
 				</trim>
 			</foreach>
 		</trim>
+		<trim suffixOverrides="and">
+			<trim suffix="and">
+				<if test="arg0.location != ''">
+					location = #{arg0.location}
+				</if>
+			</trim>
+			<trim>
+				<if test="arg0.type != ''">
+					type = #{arg0.type}
+				</if>
+			</trim>
+		</trim>
 	</sql>
 
-
 	<insert id="registerBoard">
-		insert into board_table (bbno,title,writer,content,membern,name,type,location) values(boardseq.nextval,#{title},#{writer},#{content},#{membern},#{name},#{type},#{location})
+		insert into board_table
+		(bbno,title,writer,content,membern,name,type,location)
+		values(boardseq.nextval,#{title},#{writer},#{content},#{membern},#{name},#{type},#{location})
 	</insert>
-	<select id="getboardwithtype" resultType="com.spring.domain.BoardDTO">
+
+	<select id="getboardwithtype"
+		resultType="com.spring.domain.BoardDTO">
 		select * from 
 		<![CDATA[(
 		SELECT 
@@ -38,33 +53,18 @@
 		]]>
 		<include refid="critreia"></include>
 		<![CDATA[
-		ROWNUM<=#{arg1.pageNum}*#{arg1.amount} and type = #{arg0.type} order by bbno desc
+		and ROWNUM<=#{arg1.pageNum}*#{arg1.amount} order by bbno desc
 		)
 		WHERE rn > (#{arg1.pageNum}-1)*#{arg1.amount} 
-		]]>  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
+		]]>
 	</select>
-	<select id="getreviewwithlocation" resultType="com.spring.domain.BoardDTO">
-		select * from board_table where location = #{location} and type='리뷰' order by bbno desc
-		
+
+
+	<select id="getTotal" resultType="int">
+		select count(bbno) from board_table where
+		<include refid="critreia"></include>
 	</select>
-		<select id="getTotal" resultType="int">
-		select count(bbno) from board_table where <include refid="critreia"></include>type = #{arg0.type} order by bbno desc
-	</select>
+
 
 
 

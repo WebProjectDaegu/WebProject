@@ -7,12 +7,14 @@ import org.ietf.jgss.Oid;
 import org.json.simple.JSONArray;
 
 import com.spring.domain.FestivalDTO;
+import com.spring.domain.PageDTO;
 
 
 public interface FestivalMapper {
 
 	public void insertFestival(FestivalDTO festivalDTO);
 	public List<FestivalDTO> getlist();
-	public List<FestivalDTO> getlistwithlocation(FestivalDTO festivalDTO);
+	public List<FestivalDTO> getlistwithlocation(FestivalDTO festivalDTO,PageDTO pageDTO);
 	public FestivalDTO getDetail(String name);
+	public int gettotal(FestivalDTO festivalDTO, PageDTO pageDTO);
 }

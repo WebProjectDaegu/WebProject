@@ -3,25 +3,68 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.FestivalMapper">
+	<sql id="critreia">
+		<trim prefix="(" suffix=") and" prefixOverrides="OR">
+			<foreach item='type' collection="arg1.searchTypeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='T'.toString()">
+							title like '%' || #{arg1.keyword} || '%'
+						</when>
+						<when test="type=='C'.toString()">
+							content like '%' || #{arg1.keyword} || '%'
+						</when>
+						<when test="type=='W'.toString()">
+							writer like '%' || #{arg1.keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+		<trim suffixOverrides="and">
+			<trim suffix="and">
+				<if test="arg0.location != ''">
+					location = #{arg0.location}
+				</if>
+			</trim>
+		</trim>
+	</sql>
 	<insert id="insertFestival">
-	insert into festival (bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate) 
-			 select festivalseq.nextval, #{name}, #{opar}, #{fstvlCo}, #{phone}, #{homepage}, #{auspcInstt}, #{latitude}, #{hardness},#{lnmadr},#{rdnmadr},#{location}, #{startdate}, #{enddate}
-	from dual WHERE NOT EXISTS (SELECT name FROM festival WHERE name = #{name} and startdate = #{startdate})
-	
-	
-	<!-- insert into tbl_board(bno, title, content, writer)
-		values(seq_board.nextval, #{title}, #{content}, #{writer})-->
+		insert into festival
+		(bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate)
+		select festivalseq.nextval, #{name}, #{opar}, #{fstvlCo}, #{phone},
+		#{homepage}, #{auspcInstt}, #{latitude},
+		#{hardness},#{lnmadr},#{rdnmadr},#{location}, #{startdate}, #{enddate}
+		from dual WHERE NOT EXISTS (SELECT name FROM festival WHERE name =
+		#{name} and startdate = #{startdate})
+
+
 	</insert>
 	<select id="getlist" resultType="com.spring.domain.FestivalDTO">
-		select bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate from festival order by startdate desc
+		select * from festival order by
+		startdate desc
 	</select>
 
-	<select id="getDetail" resultType="com.spring.domain.FestivalDTO">
-	select bno,name,opar,fstvlCo,phone,homepage,auspcInstt,latitude,hardness,lnmadr,rdnmadr,location,startdate,enddate from festival where name = #{name}
+	<select id="getDetail"
+		resultType="com.spring.domain.FestivalDTO">
+		select * from festival where name = #{name}
 	</select>
-	<select id="getlistwithlocation" resultType="com.spring.domain.FestivalDTO">
-		select * from festival where location = #{location} order by startdate desc
-	</select> 
+	<select id="getlistwithlocation"
+		resultType="com.spring.domain.FestivalDTO">
+		select * from <![CDATA[ (select rownum rn, festival.* from festival where
+		]]>
+		<include refid="critreia"></include>
+		 <![CDATA[
+		and ROWNUM<=#{arg1.pageNum}*#{arg1.amount} order by startdate desc
+		)
+		WHERE rn > (#{arg1.pageNum}-1)*#{arg1.amount} 
+		]]>
+	</select>
+	<select id="gettotal" resultType="int">
+		select count(bno) from festival where
+		<include refid="critreia"></include>
+	</select>
 
 </mapper>
-	<!--  VALUES (#{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, #{latitude}, #{hardness}, #{startdate}, #{enddate})-->
+<!-- VALUES (#{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, 
+	#{latitude}, #{hardness}, #{startdate}, #{enddate}) -->

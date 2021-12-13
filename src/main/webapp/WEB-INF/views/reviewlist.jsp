@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><c:out value="${board.location }" /> 리뷰</title>
+<title><c:out value="${board0.location }" /> 리뷰</title>
 <link rel="stylesheet" href="/resources/css/style.css">
 <script src="/resources/js/jquery.js"></script>
 <style>
@@ -149,7 +149,7 @@ button {
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<br>
 	<h1>
-		<c:out value="${board.location }"></c:out>
+		<c:out value="${board0.location }"></c:out>
 		리뷰 페이지
 	</h1>
 	<br>
@@ -176,46 +176,63 @@ button {
 				<th scope="col">조회수</th>
 			</tr>
 		</thead>
-<tr>
-<c:forEach  var = "review" items="${boardlist}">
-			<td class="title"><a href="#"><c:out value="${review.title}" /></a> <img
-				src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13"
-				height="12" class="pic">
-				<c:if test="${board.replyer > 0}">
-				<a class="comment" href="#">[<c:out value="${board.replyer }"/>]</a> 
-				</c:if> <img
-				src="/resources/images/ic_new.gif" width="10" height="9" class="new"
-				alt="새글"></td>
-			<td class="name"><c:out value="${review.writer}" /></td>
-			<td class="date"><c:out value="${review.writedate}" /></td>
-			<td class="hit"><c:out value="${review.visiter}" /></td>
+		<tbody>
+			<c:forEach var="board" items="${boardlist}">
+			<tr>
+				<td class="title"><a href="#"><c:out value="${board.title}" /></a>
+					<img src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13"
+					height="12" class="pic"> <c:if test="${board.replyer > 0}">
+						<a class="comment" href="#">[<c:out value="${board.replyer }" />]
+						</a>
+					</c:if> <img src="/resources/images/ic_new.gif" width="10" height="9"
+					class="new" alt="새글"></td>
+				<td class="name"><c:out value="${board.writer}" /></td>
+				<td class="date"><c:out value="${board.writedate}" /></td>
+				<td class="hit"><c:out value="${board.visiter}" /></td>
 			</tr>
-</c:forEach>
+		</c:forEach>
+		</tbody>
 	</table>
 	<div id="search">
-		<form>
-			<select name="category">
-				<option value="title">제목</option>
-				<option value="name">글쓴이</option>
-				<option value="content">내용</option>
-			</select> <input type="text" name="search" size="40" required="required">
-			<button class="btn button">검색</button>
+		<form action="reviewlist">
+			<select name="searchtype">
+				<option value="T">제목</option>
+				<option value="W">글쓴이</option>
+				<option value="C">내용</option>
+			</select> <input type="text" name="keyword" size="40" required="required">
+			<input type="hidden" value = "${board0.location}" name = "location">
+			<button type="submit" class="btn button">검색</button>
 		</form>
 	</div>
 	<br>
 	<br>
 	<div class="wrap_paging">
-		<a href="#" class="first" style="border: 1px solid black">맨처음</a> <a
-			href="#" class="prev" style="border: 1px solid black">이전</a> <a
-			href="#" class="on view">[1]</a> <a href="#" class="view">[2]</a> <a
-			href="#" class="view">[3]</a> <a href="#" class="view">[4]</a> <a
-			href="#" class="view">[5]</a> <a href="#" class="view">[6]</a> <a
-			href="#" class="view">[7]</a> <a href="#" class="view">[8]</a> <a
-			href="#" class="view">[9]</a> <a href="#" class="view">[10]</a> <a
-			href="#" class="next" style="border: 1px solid black">다음</a> <a
-			href="#" class="last" style="border: 1px solid black">마지막</a>
+		<c:if test="${page.startPage >10 }">
+			<a href="reviewlist?location=${board0.location }" class="first" style="border: 1px solid black">맨처음</a>
+		</c:if>
+		<c:if test="${page.prev}">
+			<a href="reviewlist?pageNum=${page.startPage-1 }&location=${board0.location }" class="prev"
+				style="border: 1px solid black">이전</a>
+		</c:if>
+		<c:forEach var="pageN" begin="${page.startPage }"
+			end="${page.endPage }">
+			<a href="reviewlist?pageNum=${pageN}&location=${board0.location }"
+				class="<c:if test ='${pageN == page.pageNum }'>on</c:if> view">[${pageN}]</a>
+		</c:forEach>
+		<c:if test="${page.next}">
+			<a href="reviewlist?pageNum=${page.endPage+1 }&location=${board0.location }" class="next"
+				style="border: 1px solid black">다음</a>
+		</c:if>
+		<c:if test="${page.endPage <page.realEnd}">
+			<a href="reviewlist?pageNum=${page.realEnd }&location=${board0.location }" class="last"
+				style="border: 1px solid black">마지막</a>
+		</c:if>
 	</div>
 	<br>
+	<form action="reviewlist" name="pagesave">
+		<input type="hidden" name="keyword" value="${page.keyword}"> <input
+			type="hidden" name="searchtype" value="${page.searchtype}">
+	</form>
 	<div id="wrap">
 		<footer>footer</footer>
 	</div>

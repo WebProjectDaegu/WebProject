@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.IOException;
 import java.io.WriteAbortedException;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -91,10 +92,14 @@ public class XMLController {
 	}
 	@GetMapping("/reviewlist")
 	public void getreviewlist(Model model,BoardDTO boardDTO,PageDTO pageDTO) {
-		log.info(boardDTO.getLocation());
-		model.addAttribute("board",boardDTO);
-		log.info(boardservice.getreviewWithlocation(boardDTO));
-		model.addAttribute("boardlist",boardservice.getreviewWithlocation(boardDTO));
+		pageDTO.pagemaker(boardservice.gettotal(boardDTO, pageDTO));
+		boardDTO.setType("리뷰");
+		boardDTO.setLocation(boardDTO.getLocation());
+		model.addAttribute("board0",boardDTO);
+		model.addAttribute("page",pageDTO);
+		log.info(boardDTO);
+		log.info(pageDTO);
+		model.addAttribute("boardlist",boardservice.getBoardwithBoard(boardDTO,pageDTO));
 	}
 	@GetMapping("/reviewwrite")
 	public void reviewwrite(Model model,BoardDTO boardDTO) {
@@ -110,9 +115,13 @@ public class XMLController {
 
 	}
 	@GetMapping("/festivallist")
-	public void festivallist(Model model,FestivalDTO festivalDTO,@RequestParam("location")String location) {
-		model.addAttribute("location",location);
-		model.addAttribute("board",service.getListwithlocation(festivalDTO));
+	public void festivallist(Model model,FestivalDTO festivalDTO,PageDTO pageDTO) {
+		pageDTO.pagemaker(service.gettotal(festivalDTO, pageDTO));
+		model.addAttribute("board0",festivalDTO);
+		model.addAttribute("page",pageDTO);
+		log.info(festivalDTO);
+		log.info(pageDTO);
+		model.addAttribute("boards",service.getListwithlocation(festivalDTO,pageDTO));
 		
 	}
 	
