@@ -1,6 +1,6 @@
 --축제 DB
-drop sequence festivalseq;
-create sequence festivalseq;
+drop sequence boardseq;
+create sequence boardseq;
 
 drop table festival;
 create table festival (
@@ -43,8 +43,7 @@ insert into memberinfo
 (membern,id,password,name,gender,nickname,birth,phone,permission) values
 (memberseq.nextval,'user','1234','이길동','남성','일반유저','22000101','01022222222',0);
 --게시판 DB
-drop sequence boardseq;
-create sequence boardseq;
+
 
 drop table board_table;
 create table board_table(

@@ -142,6 +142,19 @@ button {
 				menu.removeAttr('style');
 			}
 		});
+		var keywordsave = $("#keywordsave");
+		$('.wrap_paging a').on("click", function(e) {
+			console.log("click");
+			e.preventDefault();
+			keywordsave.find('input[name="pageNum"]').val($(this).attr('href'));
+			keywordsave.submit();
+		});
+		$("table a").on("click",function(e){
+			e.preventDefault();
+			actionForm.attr("action", "freeDetail");
+			keywordsave.find('input[name="pageNum"]').val($(this).attr('href'));
+			keywordsave.submit();
+		})
 	});
 </script>
 </head>
@@ -204,30 +217,31 @@ button {
 	<br>
 	<div class="wrap_paging">
 		<c:if test="${page.startPage >10 }">
-			<a href="free" class="first" style="border: 1px solid black">맨처음</a>
+			<a href="1" class="first" style="border: 1px solid black">맨처음</a>
 		</c:if>
 		<c:if test="${page.prev}">
-			<a href="free?pageNum=${page.startPage-1 }" class="prev"
+			<a href="${page.startPage-1 }" class="prev"
 				style="border: 1px solid black">이전</a>
 		</c:if>
 		<c:forEach var="pageN" begin="${page.startPage }"
 			end="${page.endPage }">
-			<a href="free?pageNum=${pageN}"
+			<a href="${pageN}"
 				class="<c:if test ='${pageN == page.pageNum }'>on</c:if> view">[${pageN}]</a>
 		</c:forEach>
 		<c:if test="${page.next}">
-			<a href="free?pageNum=${page.endPage+1 }" class="next"
+			<a href="${page.endPage+1 }" class="next"
 				style="border: 1px solid black">다음</a>
 		</c:if>
 		<c:if test="${page.endPage <page.realEnd}">
-			<a href="free?pageNum=${page.realEnd }" class="last"
+			<a href="${page.realEnd }" class="last"
 				style="border: 1px solid black">마지막</a>
 		</c:if>
 	</div>
 	<br>
-	<form action="free" name="pagesave">
+	<form id = "keywordsave"action="free" name="pagesave">
 		<input type="hidden" name="keyword" value="${page.keyword}"> <input
 			type="hidden" name="searchtype" value="${page.searchtype}">
+			<input type="hidden" name="pageNum"	value="${page.pageNum}">
 	</form>
 	<div id="wrap">
 		<footer>footer</footer>

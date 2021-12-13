@@ -116,6 +116,7 @@ public class XMLController {
 	}
 	@GetMapping("/festivallist")
 	public void festivallist(Model model,FestivalDTO festivalDTO,PageDTO pageDTO) {
+		pageDTO.setAmount(20);
 		pageDTO.pagemaker(service.gettotal(festivalDTO, pageDTO));
 		model.addAttribute("board0",festivalDTO);
 		model.addAttribute("page",pageDTO);
@@ -144,6 +145,11 @@ public class XMLController {
 	@GetMapping("/freewrite")
 	public void freewrite(Model model,BoardDTO boardDTO) {
 		model.addAttribute("board",boardDTO);
+		
+	}
+	@GetMapping("/freeDetail")
+	public void freeDetail(Model model,BoardDTO boardDTO,PageDTO pageDTO) {
+		
 		
 	}
 	

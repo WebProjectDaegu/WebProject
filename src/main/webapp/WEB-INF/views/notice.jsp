@@ -142,7 +142,18 @@ button {
 				menu.removeAttr('style');
 			}
 		});
+		var keywordsave = $("#keywordsave");
+		$('.wrap_paging a').on("click", function(e) {
+			console.log("click");
+			e.preventDefault();
+			keywordsave.find('input[name="pageNum"]').val($(this).attr('href'));
+			keywordsave.submit();
+		});
 	});
+
+	
+	
+	
 </script>
 </head>
 <body>
@@ -197,11 +208,11 @@ button {
 	</table>
 	<div id="search">
 		<form>
-			<select name="category">
-				<option value="title">제목</option>
-				<option value="name">글쓴이</option>
-				<option value="content">내용</option>
-			</select> <input type="text" name="search" size="40" required="required">
+			<select name="searchtype">
+				<option value="T">제목</option>
+				<option value="W">글쓴이</option>
+				<option value="C">내용</option>
+			</select> <input type="text" name="keyword" size="40" required="required">
 			<button class="btn button">검색</button>
 		</form>
 	</div>
@@ -215,7 +226,7 @@ button {
 			<a href="notice?pageNum=${page.startPage-1 }" class="prev" style="border: 1px solid black">이전</a>
 		</c:if>
 		<c:forEach var="pageN" begin="${page.startPage }" end="${page.endPage }">
-			<a href="notice?pageNum=${pageN}" class="<c:if test ='${pageN == page.pageNum }'>on</c:if> view">[${pageN}]</a>
+			<a href="${pageN}" class="<c:if test ='${pageN == page.pageNum }'>on</c:if> view">[${pageN}]</a>
 		</c:forEach>
 			<c:if test="${page.next}">
 			<a	href="notice?pageNum=${page.endPage+1 }" class="next" style="border: 1px solid black">다음</a> 
@@ -225,9 +236,10 @@ button {
 			</c:if>
 	</div>
 	<br>
-	<form name="pagesave">
-		<input type="hidden" name = "keyword"value="${page.keyword}">
-		<input type="hidden" name = "searchtype"value="${page.searchtype}">
+	<form id = "keywordsave"action="notice" name="pagesave">
+		<input type="hidden" name="keyword" value="${page.keyword}"> <input
+			type="hidden" name="searchtype" value="${page.searchtype}">
+			<input type="hidden" name="pageNum"	value="${page.pageNum}">
 	</form>
 	<div id="wrap">
 		<footer>footer</footer>
