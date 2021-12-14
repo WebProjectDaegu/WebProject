@@ -18,11 +18,6 @@ public class XMLServiceimpl implements XMLService {
 		return mapper.getlist();
 	}
 	@Override
-	public FestivalDTO getDetail(String name) {
-		// TODO Auto-generated method stub
-		return mapper.getDetail(name);
-	}
-	@Override
 	public List<FestivalDTO> getListwithlocation(FestivalDTO festivalDTO,PageDTO pageDTO) {
 		// TODO Auto-generated method stub
 		return mapper.getlistwithlocation(festivalDTO,pageDTO);
@@ -31,6 +26,16 @@ public class XMLServiceimpl implements XMLService {
 	public int gettotal(FestivalDTO festivalDTO, PageDTO pageDTO) {
 		// TODO Auto-generated method stub
 		return mapper.gettotal(festivalDTO, pageDTO);
+	}
+	@Override
+	public FestivalDTO getdetail(FestivalDTO festivalDTO) {
+		// TODO Auto-generated method stub
+		return mapper.getDetail(festivalDTO);
+	}
+	@Override
+	public void PlusVisiter(FestivalDTO festivalDTO) {
+		mapper.plusVisiter(festivalDTO);
+		
 	}
 
 

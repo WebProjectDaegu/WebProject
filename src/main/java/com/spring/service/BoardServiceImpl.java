@@ -25,6 +25,16 @@ public class BoardServiceImpl implements BoardService {
 	public int gettotal(BoardDTO boardDTO, PageDTO pageDTO) {
 		return mapper.getTotal(boardDTO, pageDTO);
 	}
+	@Override
+	public void PlusVisiter(BoardDTO boardDTO) {
+		mapper.PlusVisitor(boardDTO);
+		
+	}
+	@Override
+	public BoardDTO getDetail(BoardDTO boardDTO) {
+		return mapper.getdetail(boardDTO);
+	}
+
 
 
 }

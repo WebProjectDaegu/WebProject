@@ -152,6 +152,14 @@ button {
 			console.log("click");
 			e.preventDefault();
 			keywordsave.find('input[name="pageNum"]').val($(this).attr('href'));
+			keywordsave.find('input[name="bno"]').remove();
+			keywordsave.submit();
+		});
+		$('.review a').on("click", function(e) {
+			console.log("click");
+			e.preventDefault();
+			keywordsave.attr("action", "detail");
+			keywordsave.find('input[name="bno"]').val($(this).attr('href'));
 			keywordsave.submit();
 		});
 	});
@@ -261,7 +269,7 @@ button {
 		<tbody>
 			<c:forEach var="festival" items="${boards}">
 				<tr>
-					<td class="title"><a href="fesDetail?bno=${festival.bno}">${festival.name}</a></td>
+					<td class="title"><a href="${festival.bno}">${festival.name}</a></td>
 					<td>${festival.startdate}-${festival.enddate}</td>
 					<td>${festival.visiter}</td>
 				</tr>
@@ -312,7 +320,8 @@ button {
 		<input type="hidden" name="keyword" value="${page.keyword}"> <input
 			type="hidden" name="searchtype" value="${page.searchtype}">
 			<input type="hidden" name="pageNum"	value="${page.pageNum}"> 
-			<input type="hidden" name="location"	value="${board0.location}"> 
+			<input type="hidden" name="location"	value="${board0.location}"> 			
+			<input type="hidden" name="bno" value=""> 
 	</form>
 	<br>
 	<div id="wrap">

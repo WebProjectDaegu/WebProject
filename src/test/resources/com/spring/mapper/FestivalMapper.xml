@@ -47,15 +47,15 @@
 
 	<select id="getDetail"
 		resultType="com.spring.domain.FestivalDTO">
-		select * from festival where name = #{name}
+		select * from festival where bno = #{bno}
 	</select>
 	<select id="getlistwithlocation"
 		resultType="com.spring.domain.FestivalDTO">
-		select * from <![CDATA[ (select rownum rn, festival.* from festival where
+		select * from <![CDATA[ (select /*+ INDEX_DESC(festival PK_FESTIVAL)*/rownum rn, festival.* from festival where
 		]]>
 		<include refid="critreia"></include>
 		 <![CDATA[
-		and ROWNUM<=#{arg1.pageNum}*#{arg1.amount} order by startdate desc
+		and ROWNUM<=#{arg1.pageNum}*#{arg1.amount}
 		)
 		WHERE rn > (#{arg1.pageNum}-1)*#{arg1.amount} 
 		]]>
@@ -64,6 +64,9 @@
 		select count(bno) from festival where
 		<include refid="critreia"></include>
 	</select>
+	<update id="plusVisiter">
+		update festival set visiter =visiter+1 where bno = #{bno}
+	</update>
 
 </mapper>
 <!-- VALUES (#{name}, #{location}, #{content}, #{phone}, #{homepage}, #{local}, 

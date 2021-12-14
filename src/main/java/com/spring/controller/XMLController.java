@@ -24,6 +24,7 @@ import com.spring.domain.FestivalDTO;
 import com.spring.domain.PageDTO;
 import com.spring.service.BoardService;
 import com.spring.service.ReadFestival;
+import com.spring.service.ReplyService;
 import com.spring.service.XMLService;
 import com.spring.service.XMLServiceimpl;
 
@@ -39,6 +40,8 @@ public class XMLController {
 	XMLService service;
 	@Autowired
 	BoardService boardservice;
+	@Autowired
+	ReplyService replyService;
 	
 
 
@@ -47,24 +50,7 @@ public class XMLController {
 
 	}
 
-	@GetMapping("/getFestival")
-	public void getXML(Model model) throws IOException, ParseException {
 
-		ReadFestival a = new ReadFestival();
-
-	}
-
-	@GetMapping("/listXML")
-	public void list(Model model) {
-		log.info(service.getList());
-		model.addAttribute("XML", service.getList());
-	}
-
-	@GetMapping("detail")
-	public void festivalDetail(@RequestParam("name") String name, Model model) {
-		model.addAttribute("xml", service.getDetail(name));
-
-	}
 
 	
 	@GetMapping("/notice")
@@ -76,6 +62,7 @@ public class XMLController {
 		log.info(boardservice.getBoardwithBoard(boardDTO,pageDTO));
 		
 		model.addAttribute("page",pageDTO);
+		model.addAttribute("board0",boardDTO);
 		model.addAttribute("board",boardservice.getBoardwithBoard(boardDTO,pageDTO));
 	}
 	@GetMapping("/noticewrite")
@@ -106,6 +93,7 @@ public class XMLController {
 		model.addAttribute("board",boardDTO);
 		
 	}
+
 	
 	
 	
@@ -125,6 +113,12 @@ public class XMLController {
 		model.addAttribute("boards",service.getListwithlocation(festivalDTO,pageDTO));
 		
 	}
+	@GetMapping("/festivalDetail")
+	public void festivalDetail(Model model,FestivalDTO festivalDTO,PageDTO pageDTO) {
+		service.PlusVisiter(festivalDTO);
+		model.addAttribute("page",pageDTO);
+		model.addAttribute("board",service.getdetail(festivalDTO));
+	}
 	
 	
 	
@@ -136,9 +130,8 @@ public class XMLController {
 		pageDTO.pagemaker(boardservice.gettotal(boardDTO, pageDTO));
 		log.info(pageDTO);
 		log.info(boardDTO);
-		log.info(boardservice.getBoardwithBoard(boardDTO,pageDTO));
-		
 		model.addAttribute("page",pageDTO);
+		model.addAttribute("board0",boardDTO);
 		model.addAttribute("board",boardservice.getBoardwithBoard(boardDTO,pageDTO));
 		
 	}
@@ -147,9 +140,13 @@ public class XMLController {
 		model.addAttribute("board",boardDTO);
 		
 	}
-	@GetMapping("/freeDetail")
+	@GetMapping("/detail")
 	public void freeDetail(Model model,BoardDTO boardDTO,PageDTO pageDTO) {
-		
+		boardservice.PlusVisiter(boardDTO);
+		model.addAttribute("page",pageDTO);
+		model.addAttribute("board0",boardDTO);
+		model.addAttribute("board",boardservice.getDetail(boardDTO));
+		model.addAttribute("replys",replyService.getReply(boardDTO));
 		
 	}
 	

@@ -147,6 +147,15 @@ button {
 			console.log("click");
 			e.preventDefault();
 			keywordsave.find('input[name="pageNum"]').val($(this).attr('href'));
+			keywordsave.find('input[name="bbno"]').remove();
+			keywordsave.submit();
+			
+		});
+		$(".title a").on("click",function(e){
+			console.log("게시판내용페이지이동");
+			e.preventDefault();
+			keywordsave.attr("action", "detail");
+			keywordsave.find('input[name="bbno"]').val($(this).attr('href'));
 			keywordsave.submit();
 		});
 	});
@@ -192,7 +201,7 @@ button {
 		</thead>
 <tr>
 <c:forEach  var = "board" items="${board}">
-			<td class="title"><a href="#"><c:out value="${board.title}" /></a> <img
+			<td class="title"><a href="${board.bbno }"><c:out value="${board.title}" /></a> <img
 				src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13"
 				height="12" class="pic">
 				<c:if test="${board.replyer > 0}">
@@ -220,10 +229,10 @@ button {
 	<br>
 	<div class="wrap_paging">
 <c:if test="${page.startPage >10 }">
-		<a href="notice" class="first" style="border: 1px solid black">맨처음</a>
+		<a href="1" class="first" style="border: 1px solid black">맨처음</a>
 	</c:if>
 		<c:if test="${page.prev}">
-			<a href="notice?pageNum=${page.startPage-1 }" class="prev" style="border: 1px solid black">이전</a>
+			<a href="${page.startPage-1 }" class="prev" style="border: 1px solid black">이전</a>
 		</c:if>
 		<c:forEach var="pageN" begin="${page.startPage }" end="${page.endPage }">
 			<a href="${pageN}" class="<c:if test ='${pageN == page.pageNum }'>on</c:if> view">[${pageN}]</a>
@@ -232,7 +241,7 @@ button {
 			<a	href="notice?pageNum=${page.endPage+1 }" class="next" style="border: 1px solid black">다음</a> 
 			</c:if>
 			<c:if test="${page.endPage <page.realEnd}">
-			<a href="/notice?pageNum=${page.realEnd }" class="last" style="border: 1px solid black">마지막</a>
+			<a href="${page.realEnd }" class="last" style="border: 1px solid black">마지막</a>
 			</c:if>
 	</div>
 	<br>
@@ -240,6 +249,8 @@ button {
 		<input type="hidden" name="keyword" value="${page.keyword}"> <input
 			type="hidden" name="searchtype" value="${page.searchtype}">
 			<input type="hidden" name="pageNum"	value="${page.pageNum}">
+			<input type="hidden" name="type"	value="${board0.type}">
+			<input type="hidden" name="bbno">
 	</form>
 	<div id="wrap">
 		<footer>footer</footer>

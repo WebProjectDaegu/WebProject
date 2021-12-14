@@ -46,26 +46,36 @@
 		select * from 
 		<![CDATA[(
 		SELECT 
-		ROWNUM rn,board_table.* 
+		/*+ INDEX_DESC(board_table PK_BOARD)*/ ROWNUM rn,board_table.* 
 		FROM 
 		board_table 
 		WHERE
 		]]>
 		<include refid="critreia"></include>
 		<![CDATA[
-		and ROWNUM<=#{arg1.pageNum}*#{arg1.amount} order by bbno desc
+		and ROWNUM<=#{arg1.pageNum}*#{arg1.amount}
 		)
-		WHERE rn > (#{arg1.pageNum}-1)*#{arg1.amount} 
+		WHERE rn > (#{arg1.pageNum}-1)*#{arg1.amount}
 		]]>
 	</select>
-
+	<select id="getdetail" resultType="com.spring.domain.BoardDTO">
+		select * from board_table where bbno = #{bbno}
+	</select>
 
 	<select id="getTotal" resultType="int">
 		select count(bbno) from board_table where
 		<include refid="critreia"></include>
 	</select>
 
-	<update id=""></update>
+	<update id="PlusVisitor">
+		update board_table set visiter =visiter+1 where bbno = #{bbno}
+	</update>
+	<update id="PlusWriter">
+		update board_table set replyer =replyer+1 where bbno = #{bbno}
+	</update>
+	<update id="MinusWriter">
+		update board_table set replyer =replyer-1 where bbno = #{bbno}
+	</update>
 
 
 

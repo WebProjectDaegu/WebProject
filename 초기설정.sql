@@ -4,7 +4,7 @@ create sequence boardseq;
 
 drop table festival;
 create table festival (
-bno integer primary key,
+bno integer,
 name varchar2(1000) not null,
 opar varchar2(1000),
 fstvlCo varchar2(1000),
@@ -19,7 +19,8 @@ location varchar2(100),
 visiter integer default 0,
 startdate date,
 enddate date);
-
+update board_table set visiter =visiter+1 where bbno = 91;
+ALTER TABLE board_table ADD CONSTRAINT PK_FESTIVAL PRIMARY KEY(bno);
 --회원 DB
 drop sequence memberseq;
 create sequence memberseq;
@@ -48,7 +49,7 @@ insert into memberinfo
 drop table board_table;
 create table board_table(
 writedate date DEFAULT sysdate,
-bbno integer primary key,
+bbno integer,
 title varchar2(100),
 writer varchar2(100),
 content varchar2(2000),
@@ -59,5 +60,23 @@ type varchar2(200),
 visiter integer default 0,
 replyer integer default 0
 );
+ALTER TABLE board_table ADD CONSTRAINT PK_BOARD PRIMARY KEY(BBNO);
+
+--댓글 테이블
+drop SEQUENCE reply_sequence;
+create SEQUENCE reply_sequence;
+
+drop table reply_table;
+create table reply_table(
+rno INTEGER primary key,
+brno INTEGER,
+mrno INTEGER,
+writer varchar(30),
+content varchar(2000),
+writeDate date default sysdate,
+confirmDate date default sysdate
+);
+
+
 
 commit;

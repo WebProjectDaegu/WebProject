@@ -144,17 +144,20 @@ button {
 		});
 		var keywordsave = $("#keywordsave");
 		$('.wrap_paging a').on("click", function(e) {
-			console.log("click");
+			console.log("페이지이동");
+			keywordsave.attr("action", "free");
 			e.preventDefault();
 			keywordsave.find('input[name="pageNum"]').val($(this).attr('href'));
+			keywordsave.find('input[name="bbno"]').remove();
 			keywordsave.submit();
 		});
-		$("table a").on("click",function(e){
+		$(".title a").on("click",function(e){
+			console.log("게시판내용페이지이동");
 			e.preventDefault();
-			actionForm.attr("action", "freeDetail");
-			keywordsave.find('input[name="pageNum"]').val($(this).attr('href'));
+			keywordsave.attr("action", "detail");
+			keywordsave.find('input[name="bbno"]').val($(this).attr('href'));
 			keywordsave.submit();
-		})
+		});
 	});
 </script>
 </head>
@@ -190,7 +193,7 @@ button {
 		</thead>
 		<tr>
 			<c:forEach var="board" items="${board}">
-				<td class="title"><a href="#"><c:out value="${board.title}" /></a>
+				<td class="title"><a href="${board.bbno }"><c:out value="${board.title}" /></a>
 					<img src="/resources/images/ic_pic.gif" alt="첨부이미지" width="13"
 					height="12" class="pic"> <c:if test="${board.replyer > 0}">
 						<a class="comment" href="#">[<c:out value="${board.replyer }" />]
@@ -242,6 +245,8 @@ button {
 		<input type="hidden" name="keyword" value="${page.keyword}"> <input
 			type="hidden" name="searchtype" value="${page.searchtype}">
 			<input type="hidden" name="pageNum"	value="${page.pageNum}">
+			<input type="hidden" name="type"	value="${board0.type}">
+			<input type="hidden" name="bbno">
 	</form>
 	<div id="wrap">
 		<footer>footer</footer>
