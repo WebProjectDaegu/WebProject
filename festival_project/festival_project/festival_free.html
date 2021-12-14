@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자유 게시판</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: "Noto Sans KR", sans-serif;
+        }
+        .free, .free th, .free td {
+            border: 0;
+            margin-left: 240px;
+        }
+        .free a {
+            color: #383838;
+            text-decoration: none;
+        }
+        .free {
+            width: 70%;
+            border-bottom: 1px solid #999999;
+            color: #666;
+            font-size: 12px;
+            table-layout: fixed;
+        }
+        .free caption {
+            display: none;
+        }
+        .free th {
+            padding: 5px 0 6px;
+            border-top: solid 1px #999;
+            border-bottom:solid 1px #b2b2b2;
+            background-color: #f1f1f4;
+            color:#333;
+            font-weight: bold;
+            line-height: 20px;
+            vertical-align: top;
+        }
+        .free td {
+            padding: 8px 0 9px;
+            border-bottom: 1px solid #d2d2d2;
+            text-align: center;
+            line-height: 18px;
+        }
+    
+        .free .date, .free .hit {
+            padding: 0;
+            font-family: Tahoma;
+            font-size: 11px;
+            line-height: normal;
+        }
+        .free .title {
+            text-align: left;
+            padding-left: 15px;
+            font-size: 13px;
+        }
+        .free .title .pic, .free .title .new {
+            margin: 0 0 2px;
+            vertical-align: middle;
+        }
+        .free .title a.comment{
+            padding: 0;
+            background: none;
+            color: #f00;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .free tr.freefree .title a {
+            padding-left: 16px;
+            background:url(images/ic_reply.png) 0 1px no-repeat;
+        }
+        /* 작성하기 버튼 */
+        #write_btn {
+            border: 0;
+            outline: 0;
+            float: right;
+            width: 80px;
+            height: 25px;
+            background-color: #f1ddc5;
+            color: black;
+            margin-right: 220px;
+        }
+    </style>
+    <script>
+         $(function(){
+            var trigger = $("#trigger");
+            var menu = $("nav ul");
+            $(trigger).click(function(e){
+                e.preventDefault();
+                menu.slideToggle();
+            });
+    
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w >= 764 && menu.is(":hidden")){
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    </head>
+    <body>
+    <header>
+        <!-- <button type="button" onclick="location.href='festival.html'">메인 페이지</button> -->
+        <button type="button" id="join_btn" onclick="window.open('festival_join.html');">회원가입</button>
+        <button type="button" id="login_btn" onclick="window.open('festival_login.html');">로그인</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="festival.html">메인 페이지</a></li>
+            <li><a href="festival_notice.html">공지사항</a></li>
+            <li><a href="festival_local_info.html">전국 문화축제</a></li>
+            <li><a href="festival_review.html">리뷰 게시판</a></li>
+        </ul>
+        <a href="#" id="trigger">MENU</a>
+    </nav>
+    <br>
+    <h1>자유 게시판</h1>
+    <br>
+    <div id="write">
+        <button type="button" id="write_btn" onclick="window.open('free_write.html');">작성하기</button>
+    </div>
+    <br>
+    <br>
+    <table class="free" border="1" cellspacing="0">
+        <caption>자유 게시판</caption>
+        <colgroup>
+            <col>
+            <col width="110">
+            <col width="100">
+            <col width="80">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">제목</th>
+                <th scope="col">글쓴이</th>
+                <th scope="col">날짜</th>
+                <th scope="col">조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="title">
+                    <a href="freeBoard.html">자유게시판</a>
+                    <img src="images/ic_pic.gif" alt="첨부이미지" width="13" height="12" class="pic">
+                    <a class="comment" href="freeBoard.html">[5]</a>
+                    <img src="images/ic_new.gif" width="10" height="9" class="new" alt="새글">
+                </td>
+                <td class="name">사용자7</td>
+                <td class="date">2021/12/24</td>
+                <td class="hit">123</td>
+            </tr>
+            
+        </tbody>
+    </table>
+            <br>
+        </section>
+        <div id="wrap">
+            <footer>footer</footer>
+        </div>
+    </body>
+    </html>
