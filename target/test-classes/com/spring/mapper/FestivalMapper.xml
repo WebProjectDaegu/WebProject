@@ -51,7 +51,7 @@
 	</select>
 	<select id="getlistwithlocation"
 		resultType="com.spring.domain.FestivalDTO">
-		select * from <![CDATA[ (select /*+ INDEX_DESC(festival PK_FESTIVAL)*/rownum rn, festival.* from festival where
+		select * from <![CDATA[ (select /*+ INDEX_DESC(PK_ENDDATE)*/rownum rn, festival.* from festival where
 		]]>
 		<include refid="critreia"></include>
 		 <![CDATA[

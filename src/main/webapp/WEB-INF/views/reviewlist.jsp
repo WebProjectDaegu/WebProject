@@ -170,7 +170,7 @@ button {
 	<br>
 	<div id="write">
 		<button type="button" id="write_btn"
-			onclick="location.href='/reviewwrite?location=<c:out value="${board.location }"/>'">작성하기</button>
+			onclick="location.href='/reviewwrite?location=<c:out value="${board0.location }"/>'">작성하기</button>
 	</div>
 	<br>
 	<br>

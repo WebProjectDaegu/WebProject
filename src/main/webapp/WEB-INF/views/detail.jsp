@@ -37,9 +37,7 @@
 	table-layout: fixed;
 }
 
-.review caption {
-	display: none;
-}
+
 
 .review th {
 	padding: 5px 0 6px;
@@ -89,6 +87,15 @@
 	padding-left: 16px;
 	background: url(images/ic_reply.png) 0 1px no-repeat;
 }
+.review caption {
+	caption-side: bottom;
+	margin-top:4px;
+	margin-right:11px;
+	text-align: right;
+}
+.review caption button{
+	width:fit-content;
+}
 
 button {
 	width: 50px;
@@ -100,6 +107,15 @@ button {
 }
 </style>
 <script>
+	function checkForm() {
+		console.log("ssad")
+		var form = document.replyForm;
+		if (!form.content.value || form.content.value!="" ) {
+			alert("내용를 입력해주에요");
+			return false;
+		}
+
+	}
 	$(function() {
 		var trigger = $("#trigger");
 		var menu = $("nav ul");
@@ -118,6 +134,7 @@ button {
 		$("#back").on("click", function() {
 			keywordsave.submit();
 		})
+
 	});
 </script>
 </head>
@@ -132,8 +149,9 @@ button {
 		</c:choose>
 		</h1>
 		<br>
+		
 		<table class="review" border="1" cellspacing="0">
-			<caption>자유 게시판</caption>
+			<caption><button id="back">목록으로</button></caption>
 			<colgroup>
 				<col>
 				<col width="110">
@@ -150,16 +168,20 @@ button {
 			</thead>
 			<tbody>
 				<tr>
-					<td class="title" style="text-align: center;">자유게시판</td>
+					<td class="title" style="text-align: center;">${board.title }</td>
 					<td class="name">${board.writer }</td>
 					<td class="date">${board.writedate }</td>
 					<td class="hit">${board.visiter }</td>
 				</tr>
 				<tr style="min-width: 50px">
-					<td class="textArea" colspan="4" style="font-size: 15px;"><img
-						href="images/ㄹㅇㄹ.jpg" alt="자유게시판"> <br>
-						<p>${board.content }</p></td>
+					<td class="textArea" colspan="4" style="font-size: 15px;">
+						<div
+							style="height: 400px; border-radius: 5px; background-color: #f1f1f4; text-align:normal;">
+						${board.content }
+						</div>
+					</td>
 				</tr>
+
 				<c:forEach var="reply" items="${replys}">
 					<tr>
 						<td class="comment" colspan="3" style="font-size: 13px;">${reply.content}</td>
@@ -167,13 +189,28 @@ button {
 					</tr>
 				</c:forEach>
 				<tr>
+					<form action="reply/register" method="post" name="replyForm"
+						onsubmit="return checkForm()">
+						<input type="hidden" name="brno" value="${board.bbno}">
+						<c:if test="${login == null }">
+							<input type="hidden" name="mrno" value="-1">
+							<input type="hidden" name="writer" value="익명">
+						</c:if>
+						<c:if test="${login != null }">
+							<input type="hidden" name="mrno" value="${login.membern }">
+							<input type="hidden" name="writer" value="${login.nickname}">
+						</c:if>
+						<input type="hidden" name="bbno" value="${board.bbno}">
+				<tr>
 					<td class="comment" colspan="3" style="font-size: 13px;"><textarea
-							name="" id="" cols="140" rows="5"></textarea></td>
-					<td style="width: 30%;"><button>확인</button></td>
+							name="content" cols="140" rows="5" id="content"></textarea></td>
+					<td style="width: 30%;"><button type="submit">확인</button></td>
 				</tr>
+				</form>
+				
 			</tbody>
 		</table>
-		<button id="back">목록으로</button>
+		<br>
 		<br>
 		</div>
 		<c:choose>
@@ -198,29 +235,5 @@ button {
 		<div id="wrap">
 			<footer>footer</footer>
 		</div>
-</body>
-</html>
-
-</script>
-<body>
-
-
-
-	<form action="reply/register" method="post">
-		<input type="text" name="content"> <input type="hidden"
-			name="brno" value="${board.bbno}">
-
-
-		<c:if test="${login == null }">
-			<input type="hidden" name="mrno" value="-1">
-			<input type="hidden" name="writer" value="익명">
-		</c:if>
-		<c:if test="${login != null }">
-			<input type="hidden" name="mrno" value="${login.membern }">
-			<input type="hidden" name="writer" value="${login.nickname}">
-		</c:if>
-		<input type="hidden" name="bbno" value="${board.bbno}"> <input
-			type="submit">
-	</form>
 </body>
 </html>

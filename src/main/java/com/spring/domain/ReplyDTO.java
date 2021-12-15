@@ -14,7 +14,7 @@ public class ReplyDTO {
 	private int brno;//게시판번호
 	private int mrno;//작성자 멤버번호
 	private String writer;//작성자 이름
-	private String content;
+	private String content="";
 	private Date writeDate;
 	private Date confrimDate;
 	

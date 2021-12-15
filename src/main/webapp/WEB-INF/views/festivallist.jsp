@@ -158,7 +158,7 @@ button {
 		$('.review a').on("click", function(e) {
 			console.log("click");
 			e.preventDefault();
-			keywordsave.attr("action", "detail");
+			keywordsave.attr("action", "festivalDetail");
 			keywordsave.find('input[name="bno"]').val($(this).attr('href'));
 			keywordsave.submit();
 		});

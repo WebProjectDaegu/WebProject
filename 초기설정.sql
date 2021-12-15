@@ -20,7 +20,8 @@ visiter integer default 0,
 startdate date,
 enddate date);
 update board_table set visiter =visiter+1 where bbno = 91;
-ALTER TABLE board_table ADD CONSTRAINT PK_FESTIVAL PRIMARY KEY(bno);
+ALTER TABLE festival ADD CONSTRAINT PK_FESTIVAL PRIMARY KEY(bno);
+ALTER TABLE festival ADD CONSTRAINT PK_ENDDATE not null(enddate);
 --È¸¿ø DB
 drop sequence memberseq;
 create sequence memberseq;
