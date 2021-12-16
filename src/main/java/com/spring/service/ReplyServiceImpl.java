@@ -35,4 +35,14 @@ public class ReplyServiceImpl implements ReplyService{
 		boardMapper.MinusWriter(boardDTO);
 		
 	}
+	@Override
+	public void delete(ReplyDTO replyDTO) {
+		mapper.deletereply(replyDTO);
+		
+	}
+	@Override
+	public void rewrite(ReplyDTO replyDTO) {
+		mapper.rewrite(replyDTO);
+		
+	}
 }

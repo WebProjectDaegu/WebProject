@@ -16,7 +16,7 @@ hardness varchar2(100),
 lnmadr varchar2(1000),
 rdnmadr varchar2(1000),
 location varchar2(100),
-visiter integer default 0,
+visiter integer default 0 ,
 startdate date,
 enddate date);
 update board_table set visiter =visiter+1 where bbno = 91;
@@ -58,8 +58,8 @@ membern integer,
 name varchar2(1000),
 location varchar(100),
 type varchar2(200),
-visiter integer default 0,
-replyer integer default 0
+visiter integer default 0 check(visiter>=0),
+replyer integer default 0 check(replyer>=0)
 );
 ALTER TABLE board_table ADD CONSTRAINT PK_BOARD PRIMARY KEY(BBNO);
 

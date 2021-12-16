@@ -37,8 +37,6 @@
 	table-layout: fixed;
 }
 
-
-
 .review th {
 	padding: 5px 0 6px;
 	border-top: solid 1px #999;
@@ -87,14 +85,16 @@
 	padding-left: 16px;
 	background: url(images/ic_reply.png) 0 1px no-repeat;
 }
+
 .review caption {
 	caption-side: bottom;
-	margin-top:4px;
-	margin-right:11px;
+	margin-top: 4px;
+	margin-right: 11px;
 	text-align: right;
 }
-.review caption button{
-	width:fit-content;
+
+.review caption button {
+	width: fit-content;
 }
 
 button {
@@ -110,7 +110,7 @@ button {
 	function checkForm() {
 		console.log("ssad")
 		var form = document.replyForm;
-		if (!form.content.value || form.content.value!="" ) {
+		if (!form.content.value || form.content.value == "") {
 			alert("내용를 입력해주에요");
 			return false;
 		}
@@ -131,9 +131,17 @@ button {
 			}
 		});
 		var keywordsave = $("#keywordsave");
+		var replyservice = $("#replyservice");
 		$("#back").on("click", function() {
 			keywordsave.submit();
-		})
+		});
+		$(".delete").on("click", function(e) {
+			console.log("삭제");
+			e.preventDefault();
+			replyservice.attr("action", "/reply/delete");
+			replyservice.find('input[name="rno"]').val($(this).attr('href'));
+			replyservice.submit();
+		});
 
 	});
 </script>
@@ -141,99 +149,122 @@ button {
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<br>
-	<h2>
+	<h1>
 		<c:choose>
 			<c:when test="${board0.type =='자유'}">자유 게시판</c:when>
 			<c:when test="${board0.type =='공지'}">공지 게시판</c:when>
 			<c:when test="${board0.type =='리뷰'}">${board0.location} 리뷰 게시판</c:when>
 		</c:choose>
-		</h1>
-		<br>
-		
-		<table class="review" border="1" cellspacing="0">
-			<caption><button id="back">목록으로</button></caption>
-			<colgroup>
-				<col>
-				<col width="110">
-				<col width="100">
-				<col width="80">
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col">제목</th>
-					<th scope="col">글쓴이</th>
-					<th scope="col">날짜</th>
-					<th scope="col">조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="title" style="text-align: center;">${board.title }</td>
-					<td class="name">${board.writer }</td>
-					<td class="date">${board.writedate }</td>
-					<td class="hit">${board.visiter }</td>
-				</tr>
-				<tr style="min-width: 50px">
-					<td class="textArea" colspan="4" style="font-size: 15px;">
-						<div
-							style="height: 400px; border-radius: 5px; background-color: #f1f1f4; text-align:normal;">
-						${board.content }
-						</div>
-					</td>
-				</tr>
+	</h1>
+	<br>
 
-				<c:forEach var="reply" items="${replys}">
-					<tr>
-						<td class="comment" colspan="3" style="font-size: 13px;">${reply.content}</td>
-						<td style="width: 30%;">${reply.writer }</td>
-					</tr>
-				</c:forEach>
+	<table class="review" border="1" cellspacing="0">
+		<caption>
+			<button id="back">목록으로</button>
+		</caption>
+		<colgroup>
+			<col>
+			<col width="110">
+			<col width="100">
+			<col width="80">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">제목</th>
+				<th scope="col">글쓴이</th>
+				<th scope="col">날짜</th>
+				<th scope="col">조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="title" style="text-align: center;">${board.title }</td>
+				<td class="name">${board.writer }</td>
+				<td class="date">${board.writedate }</td>
+				<td class="hit">${board.visiter }</td>
+			</tr>
+			<tr style="min-width: 50px">
+				<td class="textArea" colspan="4" style="font-size: 15px;">
+					<div
+						style="height: 400px; border-radius: 5px; background-color: #f1f1f4; text-align: normal;">
+						${board.content }</div>
+				</td>
+			</tr>
+
+			<c:forEach var="reply" items="${replys}">
 				<tr>
-					<form action="reply/register" method="post" name="replyForm"
-						onsubmit="return checkForm()">
-						<input type="hidden" name="brno" value="${board.bbno}">
-						<c:if test="${login == null }">
-							<input type="hidden" name="mrno" value="-1">
-							<input type="hidden" name="writer" value="익명">
-						</c:if>
-						<c:if test="${login != null }">
-							<input type="hidden" name="mrno" value="${login.membern }">
-							<input type="hidden" name="writer" value="${login.nickname}">
-						</c:if>
-						<input type="hidden" name="bbno" value="${board.bbno}">
-				<tr>
-					<td class="comment" colspan="3" style="font-size: 13px;"><textarea
-							name="content" cols="140" rows="5" id="content"></textarea></td>
-					<td style="width: 30%;"><button type="submit">확인</button></td>
+					<td class="comment" style="font-size: 13px;">${reply.content}</td>
+					<td style="width: 30%;">${reply.writer }</td>
+					<td style="width: 30%;">${reply.writeDate }</td>
+					<td style="width: 30%;"><c:if test="${reply.mrno == login.membern}"><a class="rewrite" href="${reply.mrno}">수정</a></c:if> 
+					<c:if test="${reply.mrno == login.membern || login.permission>=3}"><a class="delete" href="${reply.rno}">삭제
+								</a></c:if></td>
 				</tr>
+			</c:forEach>
+			<tr>
+				<form action="reply/register" method="post" name="replyForm"
+					onsubmit="return checkForm()">
+					<input type="hidden" name="brno" value="${board.bbno}">
+					<c:if test="${login == null }">
+						<input type="hidden" name="mrno" value="-1">
+						<input type="hidden" name="writer" value="익명">
+					</c:if>
+					<c:if test="${login != null }">
+						<input type="hidden" name="mrno" value="${login.membern }">
+						<input type="hidden" name="writer" value="${login.nickname}">
+					</c:if>
+					<input type="hidden" name="pageNum" value="${page.pageNum}">
+					<input type="hidden" name="searchtype" value="${page.searchtype}">
+					<input type="hidden" name="keyword" value="${page.keyword}">
+					<input type="hidden" name="type" value="${board0.type }"> <input
+						type="hidden" name="bbno" value="${board0.bbno}">
+					<c:if test="${board0.type =='리뷰' }">
+						<input type="hidden" name="location" value="${board0.location }">
+					</c:if>
+					<tr>
+						<td class="comment" colspan="3" style="font-size: 13px;"><textarea
+								name="content" cols="140" rows="5" id="content"></textarea></td>
+						<td style="width: 30%;"><button type="submit">확인</button></td>
+					</tr>
 				</form>
-				
-			</tbody>
-		</table>
-		<br>
-		<br>
-		</div>
-		<c:choose>
-			<c:when test="${board0.type=='자유' }">
-				<form action="free" id="keywordsave">
-			</c:when>
-			<c:when test="${board0.type=='공지' }">
-				<form action="notice" id="keywordsave">
-			</c:when>
-			<c:when test="${board0.type=='리뷰' }">
-				<form action="reviewlist" id="keywordsave">
-			</c:when>
-		</c:choose>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	</div>
+	<c:choose>
+		<c:when test="${board0.type=='자유' }">
+			<form action="free" id="keywordsave">
+		</c:when>
+		<c:when test="${board0.type=='공지' }">
+			<form action="notice" id="keywordsave">
+		</c:when>
+		<c:when test="${board0.type=='리뷰' }">
+			<form action="reviewlist" id="keywordsave">
+		</c:when>
+	</c:choose>
+	<input type="hidden" name="pageNum" value="${page.pageNum}">
+	<input type="hidden" name="searchtype" value="${page.searchtype}">
+	<input type="hidden" name="keyword" value="${page.keyword}">
+	<input type="hidden" name="type" value="${board0.type }">
+	<c:if test="${board0.type =='리뷰' }">
+		<input type="hidden" name="location" value="${board0.location }">
+	</c:if>
+	</form>
+	<div id="wrap">
+		<footer>footer</footer>
+	</div>
+<form action="/" id="replyservice" method="post">
+		<input type="hidden" name="rno" value="">
 		<input type="hidden" name="pageNum" value="${page.pageNum}"> <input
 			type="hidden" name="searchtype" value="${page.searchtype}"> <input
 			type="hidden" name="keyword" value="${page.keyword}"> <input
-			type="hidden" name="type" value="${board0.type }">
+			type="hidden" name="type" value="${board0.type }"> <input
+			type="hidden" name="bbno" value="${board0.bbno}">
 		<c:if test="${board0.type =='리뷰' }">
 			<input type="hidden" name="location" value="${board0.location }">
 		</c:if>
-		</form>
-		<div id="wrap">
-			<footer>footer</footer>
-		</div>
+
+	</form>
 </body>
 </html>

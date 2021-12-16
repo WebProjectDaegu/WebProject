@@ -12,7 +12,7 @@ import lombok.Getter;
 @Getter
 @Setter
 public class BoardDTO {
-	private long bbno;//번호
+	private int bbno;//번호
 	private Date writedate;//작성날짜
 	private String title ="";//제목
 	private String writer ="";//작성자

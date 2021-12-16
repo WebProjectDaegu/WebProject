@@ -20,11 +20,11 @@ public class PageDTO {
 	private int total; 
 	private int pageNum = 1;
 	private int amount =  10;
-	private String searchtype;
-	private String keyword;
+	private String searchtype="";
+	private String keyword="";
 	
 	public String[] getSearchTypeArr() {
-		return searchtype==null?new String[]{}:searchtype.split("");
+		return searchtype==""?new String[]{}:searchtype.split("");
 	}
 	
 	public String getListLink() {
