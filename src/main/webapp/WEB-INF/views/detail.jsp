@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -193,7 +194,7 @@ button {
 
 			<c:forEach var="reply" items="${replys}">
 				<tr>
-					<td class="comment" style="font-size: 13px;">${reply.content}</td>
+					<td style="font-size: 13px;">${reply.content}</td>
 					<td style="width: 30%;">${reply.writer }</td>
 					<td style="width: 30%;">${reply.writeDate }</td>
 					<td style="width: 30%;"><c:if test="${reply.mrno == login.membern}"><a class="rewrite" href="${reply.mrno}">수정</a></c:if> 
@@ -266,5 +267,6 @@ button {
 		</c:if>
 
 	</form>
+	
 </body>
 </html>

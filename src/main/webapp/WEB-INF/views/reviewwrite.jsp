@@ -39,6 +39,7 @@ td {
 }
 </style>
 <script>
+history.replaceState({}, null, location.pathname);
 	$(function() {
 		var trigger = $("#trigger");
 		var menu = $("nav ul");

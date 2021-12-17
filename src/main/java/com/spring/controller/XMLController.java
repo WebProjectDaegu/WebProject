@@ -137,7 +137,7 @@ public class XMLController {
 	}
 
 	@GetMapping("/detail")
-	public void freeDetail(HttpServletRequest request, HttpServletResponse response, Model model, BoardDTO boardDTO,
+	public void freeDetail(/*HttpServletRequest request, HttpServletResponse response,*/ Model model, BoardDTO boardDTO,
 			PageDTO pageDTO) {
 //		boolean havecookie = false;
 //		Cookie[] getCookie = request.getCookies(); // 모든 쿠키 가져오기
