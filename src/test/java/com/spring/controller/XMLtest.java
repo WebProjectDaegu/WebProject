@@ -35,7 +35,7 @@ public class XMLtest {
 		
 		ReadFestival a = null;
 		List<FestivalDTO> b;
-		for(int j = 0;j<20;j++) {
+		for(int j = 0;j<11;j++) {
 			b= a.read(j);
 			for(int i =0;i<b.size();i++) {
 				mapper.insertFestival(b.get(i));

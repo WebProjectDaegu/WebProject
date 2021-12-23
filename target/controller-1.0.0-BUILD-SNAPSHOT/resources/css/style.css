@@ -1,0 +1,386 @@
+* {
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #FAEEE0;
+}
+#wrap {
+  float: left;
+  width: 100%;
+}
+
+/* 화면 너비 0 ~ 1200px */
+@media (max-width: 1220px) {
+  section {
+    width: 100%;
+  }
+}
+/* 화면 너비 0 ~ 768px */
+@media (max-width: 768px) {
+  section {
+    width: 100%;
+    height: 300px;
+  }
+}
+/* 화면 너비 0 ~ 480px */
+@media (max-width: 480px) {
+  header {
+    height: 300px;
+  }
+  section {
+    height: 200px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+}
+
+/* header */
+header {
+  width: 100%;
+  height: 50px;
+  background: #DBD0C0;
+}
+#join_btn, #login_btn {
+  float: right;
+  color:black;
+  margin-right: 25px;
+  margin-top: 7px;
+  display: block;
+  width: 100px;
+  height: 30px;
+  border: 0;
+  outline: 0;
+  background-color: #f1ddc5;
+}
+
+/*네비게이션*/
+a:link,
+a:hover,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+nav {
+  width: 100vw;
+  height: auto;
+  background: #DBD0C0;
+  border-bottom: 1px solid #FAEEE0;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
+nav ul {
+  display: none;
+  height: auto;
+  text-align: center;
+}
+nav ul li {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+nav ul li a {
+  line-height: 50px;
+}
+nav a#trigger {
+  text-align: center;
+  display: block;
+  width: 100%;
+  background-color: #DBD0C0;
+  border-bottom: 1px solid #FAEEE0;
+  line-height: 40px;
+  position: relative;
+}
+
+/* 화면 너비 0 ~ 768px */
+@media screen and (min-width: 768px) {
+  nav {
+    height: auto;
+    background-color: #DBD0C0;
+  }
+  nav ul {
+    list-style: none;
+    display: block;
+    width: 750px;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+  }
+  nav ul li {
+    display: inline-block;
+    width: 22%;
+    border-bottom: 0;
+    margin-right: -6px;
+  }
+
+  nav ul li a {
+    font-size: 1em;
+    line-height: auto;
+  }
+  nav a#trigger {
+    display: none;
+  }
+}
+
+/* 섹션 */
+section {
+  width: auto;
+  position: relative;
+}
+.wrapper {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+/* 4분할 영역 */
+
+#div1, #div2 {
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+  border-bottom-left-radius:10px;
+  background-color: #F9E4C8;
+  width: 530px;
+  height: 300px;
+  float: left;
+  margin-left: 153px;
+  margin-bottom: 30px;
+}
+
+#div3, #div4 {
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+  border-bottom-left-radius:10px;
+  background-color: #F9E4C8;
+  width: 530px;
+  height: 300px;
+  float: left;
+  margin-left: 153px;
+  margin-bottom: 30px;
+}
+
+#notice_btn {
+  border: 0;
+  outline: 0;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  background-color:transparent;
+  border-bottom: 1px solid #F9E4C8;
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+  width: 100px;
+  height: 30px;
+}
+#local_btn {
+  border: 0;
+  outline: 0;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  background-color:transparent;
+  border-bottom: 1px solid #F9E4C8;
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+  width: 180px;
+  height: 30px;
+}
+#review_btn {
+  border: 0;
+  outline: 0;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  background-color:transparent;
+  border-bottom: 1px solid #F9E4C8;
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+  width: 150px;
+  height: 30px;
+}
+#free_btn {
+  border: 0;
+  outline: 0;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  background-color:transparent;
+  border-bottom: 1px solid #F9E4C8;
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+  width: 150px;
+  height: 30px;
+}
+/* 화면 너비 0 ~ 768px */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+  #div1,#div2,#div3,#div4 {
+    max-width: 1220px;
+    display: flex;
+    margin-top: 30px;
+  }
+}
+
+/* 푸터 */
+footer {
+  padding-left: 20px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-color: #F9CF93;
+  border-top: 1px solid #dbdbdb;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    max-width: 1220px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* 로그인, 회원가입 */
+.login-form {
+  width: 300px;
+  background-color: #DBD0C0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+}
+
+.join-form {
+  width: 300px;
+  background-color: #DBD0C0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+}
+
+.text-field {
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  width: 260px;
+  margin-bottom: 10px;
+}
+
+.submit-btn {
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  background-color: #212121;
+  margin-bottom: 10px;
+  color: white;
+}
+.reset-btn {
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  background-color: #212121;
+  margin-bottom: 10px;
+  color: white;
+}
+.links {
+  text-align: center;
+}
+
+.links a {
+  font-size: 12px;
+  color: #838282;
+}
+
+/* 공지사항 */
+
+body {
+  font: 17px "Nanum Gothic", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #404040;
+}
+
+li {
+  list-style: none;
+}
+
+
+#notice {
+  width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  /*outline: 1px dashed black;*/
+}
+
+#notice h1 {
+  font-size: 25px;
+  text-align: center;
+  margin: 10px 180px;
+  padding: 10px;
+  color: #000;
+  background: #F9E4C8;
+  border-radius: 30px;
+}
+
+#notice ul {
+  width: 100%;
+}
+
+#notice ul li {
+  line-height: 30px; /*li 세로 간격*/
+  padding-left: 20px;
+}
+
+#notice ul li:first-child {
+  border-top: 2px solid #6a6a6a;
+  border-bottom: 2px solid #887c7c;
+  padding-left: 150px;
+}
+
+#notice ul li:last-child {
+  border-bottom: 1px solid #000;
+}
+
+#notice ul li:nth-child(2n) {
+  background: rgb(235, 227, 227);
+  border-radius: 20px;
+}
+
+#notice ul li span {
+  display: inline-block;
+  float: right;
+  width: 150px;
+  text-align: center;
+}

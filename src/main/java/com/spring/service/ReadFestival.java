@@ -84,7 +84,34 @@ public class ReadFestival {
         	String[] location = {"세종","대구","부산","광주","서울","인천","대전","울산","경기도","강원도","충청북도","충청남도","경상북도","경상남도","전라북도","전라남도","제주특별자치도"};
         	for(int j =0;j<location.length;j++) {
         		if(e.contains(location[j])||w.contains(location[j])) {
-        			festivalDTO.setLocation(location[j]);//지역분류
+        			switch (location[j]) {
+					case "서울":
+					case "인천":
+					case "경기도":
+						festivalDTO.setLocation("경기도");//지역분류
+						break;
+					case "대구":	
+					case "경상북도":	
+						festivalDTO.setLocation("경상북도");
+						break;
+					case "부산":	
+					case "울산":	
+					case "경상남도":	
+						festivalDTO.setLocation("경상남도");
+						break;
+					case "광주":	
+					case "전라남도":	
+						festivalDTO.setLocation("전라남도");
+						break;
+					case "대전":	
+					case "세종":	
+					case "충청남도":	
+						festivalDTO.setLocation("전라남도");
+						break;
+					default:
+						festivalDTO.setLocation(location[j]);//지역분류
+						break;
+					}
         			break;
         		}
         	}

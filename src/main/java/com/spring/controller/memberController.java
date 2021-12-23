@@ -2,9 +2,11 @@ package com.spring.controller;
 
 import static org.hamcrest.CoreMatchers.nullValue;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.domain.FestivalDTO;
 import com.spring.domain.MemberDTO;
+import com.spring.mapper.FestivalMapper;
 import com.spring.service.MemberService;
+import com.spring.service.ReadFestival;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -33,12 +38,27 @@ import lombok.extern.log4j.Log4j;
 public class memberController {
 	@Autowired
 	MemberService service;
+	@Autowired
+	FestivalMapper mapper;
+	
 
 	@GetMapping("/Login")
 	public void login() {
 
 	}
-
+	@PostMapping("/admin")
+	public String testa() throws ParseException, java.text.ParseException, org.json.simple.parser.ParseException, IOException {
+		ReadFestival a = new ReadFestival();
+		List<FestivalDTO> b;
+		for(int j = 0;j<11;j++) {
+			b= a.read(j);
+			for(int i =0;i<b.size();i++) {
+				mapper.insertFestival(b.get(i));
+			}
+		}
+		return "redirect:/";
+		
+	}
 	@GetMapping("/memberRegister")
 	public void register() {
 

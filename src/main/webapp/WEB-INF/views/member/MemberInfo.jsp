@@ -1,3 +1,4 @@
+<%@page import="com.spring.controller.XMLController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="resources/js/jquery.js"></script>
+<script>
+	$(function(){
+		$("#datain").on("click",function(e){
+			e.preventdefault();				
+		})
+	})
+
+</script>
 </head>
 <body>
 <h3>멤버번호 : <c:out value="${login.membern }" /></h1>
@@ -17,5 +27,10 @@
 <h3>생년월일 : <c:out value="${login.birth}" /></h1>
 <h3>전화번호 : <c:out value="${login.phone}" /></h1>
 <h3>권한 : <c:out value="${login.permission}" /></h1>
+<c:if test ="${login.permission>4 }">
+<form action = "/member/admin" method="post">
+<button type= "submit">데이터입력</button>
+</form>
+</c:if>
 </body>
 </html>
